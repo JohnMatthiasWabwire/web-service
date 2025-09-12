@@ -1,0 +1,17 @@
+# /etc/systemd/system/hyaena-technologies/htnet.service
+
+[Unit]
+Description=Web Service
+Documentation=https://github.com/HyaenaTechnologies/hyaena-technologies-web/blob/main/documentation/
+Requires=network.target
+After=network.target
+
+[Service]
+User=hyaena-technologies
+Group=hyaena-technologies
+Restart=on-failure
+ExecStart=~/htnet serve
+
+[Install]
+WantedBy=multi-user.target
+

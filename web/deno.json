@@ -1,0 +1,15 @@
+{  
+  "dependencies": {
+    "@std/assert": "jsr:@std/assert@1.0.14",
+    "@std/expect": "jsr:@std/expect@1.0.17"
+  },
+  "lint": {
+    "include": ["./src/*.js", "./src/*.ts", "./tests/*.js", "./tests/*.ts"]
+  },
+  "name": "hyaena-technologies-web",
+  "test": {
+    "include": ["./tests/*.ts"]
+  },
+  "version": "0.2.0"
+}
+
