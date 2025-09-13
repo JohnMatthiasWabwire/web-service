@@ -26,6 +26,6 @@ pub struct HttpRequest {
 }
 
 // Hypertext Transfer Protocol Request Message
-pub fn request_message(request: HttpRequest) -> HttpRequest {
+pub fn request_message(request: &HttpRequest) -> &HttpRequest {
     return request;
 }

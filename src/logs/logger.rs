@@ -33,7 +33,7 @@ pub struct StructuredLog {
 }
 
 // Create Log File and Write to the Log File
-pub fn create_log(structured_log: StructuredLog, log_path: PathBuf) -> () {
+pub fn create_log(structured_log: &StructuredLog, log_path: PathBuf) -> () {
     let mut log_file: Result<File, Error> = File::create(log_path);
 
     match &mut log_file {
@@ -65,7 +65,7 @@ pub fn log_levels_vector() -> Vec<LogLevel> {
 }
 
 // Print Log to Standard Output
-pub fn print_log(log: StructuredLog) -> () {
+pub fn print_log(log: &StructuredLog) -> () {
     let mut standard_output: StdoutLock = stdout().lock();
 
     writeln!(standard_output, "Log Level: {}", log.log_level).unwrap();
@@ -76,7 +76,7 @@ pub fn print_log(log: StructuredLog) -> () {
 }
 
 // Open Log File and Write to the Log File
-pub fn write_log(structured_log: StructuredLog, log_path: PathBuf) -> () {
+pub fn write_log(structured_log: &StructuredLog, log_path: PathBuf) -> () {
     let mut log_file: Result<File, Error> = File::open(log_path);
 
     match &mut log_file {

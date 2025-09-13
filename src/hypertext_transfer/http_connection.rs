@@ -11,6 +11,6 @@ pub struct HttpConnection {
 }
 
 // Hypertext Transfor Protocol Connection
-pub fn protocol_connection(connection: HttpConnection) -> HttpConnection {
+pub fn protocol_connection(connection: &HttpConnection) -> &HttpConnection {
     return connection;
 }

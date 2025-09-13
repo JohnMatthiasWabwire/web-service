@@ -4,6 +4,6 @@
 pub struct HttpServer {}
 
 // Hypertext Transfer Protocol Server
-pub fn protocol_server(server: HttpServer) -> HttpServer {
+pub fn protocol_server(server: &HttpServer) -> &HttpServer {
     return server;
 }

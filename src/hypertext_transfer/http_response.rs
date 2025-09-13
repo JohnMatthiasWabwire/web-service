@@ -25,6 +25,6 @@ pub struct HttpResponse {
 }
 
 // Hypertext Transfer Protocol Response Message
-pub fn response_message(response: HttpResponse) -> HttpResponse {
+pub fn response_message(response: &HttpResponse) -> &HttpResponse {
     return response;
 }

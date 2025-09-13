@@ -13,7 +13,7 @@ pub struct LexerError {
 }
 
 // Print Lexer Error to Standard Output
-pub fn print_error(lexer_error: LexerError) -> () {
+pub fn print_error(lexer_error: &LexerError) -> () {
     let mut standard_output: StdoutLock = stdout().lock();
 
     writeln!(standard_output, "{}", lexer_error.error_message).unwrap();

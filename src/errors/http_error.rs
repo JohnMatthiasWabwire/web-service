@@ -4,7 +4,11 @@ use std::{
     fs::File,
     io::{Error, StdoutLock, Write, stdout},
     path::PathBuf,
-    result::{Result, Result::Ok},
+    process::exit,
+    result::{
+        Result,
+        Result::{Err, Ok},
+    },
     time::SystemTime,
 };
 
@@ -22,38 +26,62 @@ pub struct HttpError {
 }
 
 // Print Hypertext Transfer Error to Standard Output
-pub fn print_error(http_error: HttpError) -> () {
+pub fn print_error(http_error: &HttpError) -> () {
     let mut standard_output: StdoutLock = stdout().lock();
 
-    writeln!(standard_output, "{}", http_error.status_code).unwrap();
-    writeln!(standard_output, "{}", http_error.status_text).unwrap();
+    writeln!(
+        standard_output,
+        "{:#?}",
+        http_error.status_code.to_ascii_uppercase()
+    )
+    .unwrap();
+    writeln!(
+        standard_output,
+        "{:#?}",
+        http_error.status_text.to_ascii_lowercase()
+    )
+    .unwrap();
     writeln!(standard_output, "Time: {:#?}", http_error.current_time).unwrap();
 
     return ();
 }
 
 // Create Log File and Write an Error to the Log File
-pub fn create_error_log(http_error: HttpError, log_path: PathBuf) -> Result<File, Error> {
-    let mut log_file: File = File::create(log_path)?;
+pub fn create_error_log(http_error: &HttpError, log_path: PathBuf) -> () {
+    let log_file: Result<File, Error> = File::create(log_path);
 
-    writeln!(log_file, "Log Leve: {:#?}", http_error.log_level).unwrap();
-    writeln!(log_file, "{}", http_error.status_code).unwrap();
-    writeln!(log_file, "{}", http_error.status_text).unwrap();
-    writeln!(log_file, "Time: {:#?}", http_error.current_time).unwrap();
-
-    Ok(log_file)
+    match log_file {
+        Ok(mut file) => {
+            writeln!(file, "Log Leve: {:#?}", http_error.log_level).unwrap();
+            writeln!(file, "{:#?}", http_error.status_code).unwrap();
+            writeln!(file, "{:#?}", http_error.status_text).unwrap();
+            writeln!(file, "Time: {:#?}", http_error.current_time).unwrap();
+        }
+        Err(error) => {
+            eprintln!("Error Creating Log File: {}", error);
+            exit(1);
+        }
+    }
+    return ();
 }
 
 // Open Log File and Write an Error to the Log File
-pub fn write_error_log(http_error: HttpError, log_path: PathBuf) -> Result<File, Error> {
-    let mut log_file: File = File::open(log_path)?;
+pub fn write_error_log(http_error: &HttpError, log_path: PathBuf) -> () {
+    let log_file: Result<File, Error> = File::open(log_path);
 
-    writeln!(log_file, "").unwrap();
-    writeln!(log_file, "").unwrap();
-    writeln!(log_file, "Log Level: {:#?}", http_error.log_level).unwrap();
-    writeln!(log_file, "{}", http_error.status_code).unwrap();
-    writeln!(log_file, "{}", http_error.status_text).unwrap();
-    writeln!(log_file, "Time: {:#?}", http_error.current_time).unwrap();
-
-    Ok(log_file)
+    match log_file {
+        Ok(mut file) => {
+            writeln!(file, "").unwrap();
+            writeln!(file, "").unwrap();
+            writeln!(file, "Log Level: {:#?}", http_error.log_level).unwrap();
+            writeln!(file, "{:#?}", http_error.status_code).unwrap();
+            writeln!(file, "{:#?}", http_error.status_text).unwrap();
+            writeln!(file, "Time: {:#?}", http_error.current_time).unwrap();
+        }
+        Err(error) => {
+            eprintln!("Error Writing To Log File: {}", error);
+            exit(1);
+        }
+    }
+    return ();
 }
