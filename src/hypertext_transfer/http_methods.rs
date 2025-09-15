@@ -1,20 +1,20 @@
 #![allow(dead_code)]
 
-use std::{primitive::u8, vec::Vec};
+use std::{primitive::str, vec::Vec};
 
 // Hypertext Transfer Protocol Method Defintion
-pub type HttpMethod = &'static [u8];
+pub type HttpMethod = &'static str;
 
 // Hypertext Transfer Protocol Methods
-pub const HTTP_CONNECT: HttpMethod = "CONNECT".as_bytes();
-pub const HTTP_DELETE: HttpMethod = "DELETE".as_bytes();
-pub const HTTP_GET: HttpMethod = "GET".as_bytes();
-pub const HTTP_HEAD: HttpMethod = "HEAD".as_bytes();
-pub const HTTP_OPTIONS: HttpMethod = "OPTIONS".as_bytes();
-pub const HTTP_PATCH: HttpMethod = "PATCH".as_bytes();
-pub const HTTP_POST: HttpMethod = "POST".as_bytes();
-pub const HTTP_PUT: HttpMethod = "PUT".as_bytes();
-pub const HTTP_TRACE: HttpMethod = "TRACE".as_bytes();
+pub const HTTP_CONNECT: HttpMethod = "CONNECT"
+pub const HTTP_DELETE: HttpMethod = "DELETE"
+pub const HTTP_GET: HttpMethod = "GET"
+pub const HTTP_HEAD: HttpMethod = "HEAD"
+pub const HTTP_OPTIONS: HttpMethod = "OPTIONS"
+pub const HTTP_PATCH: HttpMethod = "PATCH"
+pub const HTTP_POST: HttpMethod = "POST"
+pub const HTTP_PUT: HttpMethod = "PUT"
+pub const HTTP_TRACE: HttpMethod = "TRACE"
 
 // Hypertext Transfer Protocol Method Vector
 pub fn methods_vector() -> Vec<HttpMethod> {

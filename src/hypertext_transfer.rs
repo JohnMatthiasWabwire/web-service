@@ -20,6 +20,8 @@ pub mod http_server;
 
 pub mod http_status_codes;
 
+pub mod http_status_texts;
+
 pub mod http_syntax_tree;
 
 pub mod http_tokenizer;

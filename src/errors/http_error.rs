@@ -13,7 +13,8 @@ use std::{
 };
 
 use crate::{
-    hypertext_transfer::http_status_codes::{HttpStatusCode, HttpStatusText},
+    http_status_codes::HttpStatusCode,
+    http_status_texts::HttpStatusText,
     logs::logger::LogLevel,
 };
 
@@ -29,18 +30,8 @@ pub struct HttpError {
 pub fn print_error(http_error: &HttpError) -> () {
     let mut standard_output: StdoutLock = stdout().lock();
 
-    writeln!(
-        standard_output,
-        "{:#?}",
-        http_error.status_code.to_ascii_uppercase()
-    )
-    .unwrap();
-    writeln!(
-        standard_output,
-        "{:#?}",
-        http_error.status_text.to_ascii_lowercase()
-    )
-    .unwrap();
+    writeln!(standard_output, "{}", http_error.status_code).unwrap();
+    writeln!(standard_output, "{}", http_error.status_text).unwrap();
     writeln!(standard_output, "Time: {:#?}", http_error.current_time).unwrap();
 
     return ();
@@ -52,9 +43,9 @@ pub fn create_error_log(http_error: &HttpError, log_path: PathBuf) -> () {
 
     match log_file {
         Ok(mut file) => {
-            writeln!(file, "Log Leve: {:#?}", http_error.log_level).unwrap();
-            writeln!(file, "{:#?}", http_error.status_code).unwrap();
-            writeln!(file, "{:#?}", http_error.status_text).unwrap();
+            writeln!(file, "Log Leve: {}", http_error.log_level).unwrap();
+            writeln!(file, "{}", http_error.status_code).unwrap();
+            writeln!(file, "{}", http_error.status_text).unwrap();
             writeln!(file, "Time: {:#?}", http_error.current_time).unwrap();
         }
         Err(error) => {
@@ -73,9 +64,9 @@ pub fn write_error_log(http_error: &HttpError, log_path: PathBuf) -> () {
         Ok(mut file) => {
             writeln!(file, "").unwrap();
             writeln!(file, "").unwrap();
-            writeln!(file, "Log Level: {:#?}", http_error.log_level).unwrap();
-            writeln!(file, "{:#?}", http_error.status_code).unwrap();
-            writeln!(file, "{:#?}", http_error.status_text).unwrap();
+            writeln!(file, "Log Level: {}", http_error.log_level).unwrap();
+            writeln!(file, "{}", http_error.status_code).unwrap();
+            writeln!(file, "{}", http_error.status_text).unwrap();
             writeln!(file, "Time: {:#?}", http_error.current_time).unwrap();
         }
         Err(error) => {

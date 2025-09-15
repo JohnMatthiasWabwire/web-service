@@ -1,114 +1,114 @@
 #![allow(dead_code)]
 
-use std::{primitive::u8, vec::Vec};
+use std::{primitive::str, vec::Vec};
 
 // Hypertext Transfer Protocol Header Definition
-pub type HttpHeader = &'static [u8];
+pub type HttpHeader = &'static str;
 
 // Hypertext Transfer Protocol Headers
-pub const HTTP_ACCEPT: HttpHeader = "Accept".as_bytes();
-pub const HTTP_ACCEPT_CLIENT_HINT: HttpHeader = "Accept-CH".as_bytes();
-pub const HTTP_ACCEPT_ENCODING: HttpHeader = "Accept-Encoding".as_bytes();
-pub const HTTP_ACCEPT_LANGUAGE: HttpHeader = "Accept-Language".as_bytes();
-pub const HTTP_ACCEPT_PATCH: HttpHeader = "Accept-Patch".as_bytes();
-pub const HTTP_ACCEPT_POST: HttpHeader = "Accept-Post".as_bytes();
-pub const HTTP_ACCEPT_RANGES: HttpHeader = "Accept-Ranges".as_bytes();
+pub const HTTP_ACCEPT: HttpHeader = "Accept"
+pub const HTTP_ACCEPT_CLIENT_HINT: HttpHeader = "Accept-CH"
+pub const HTTP_ACCEPT_ENCODING: HttpHeader = "Accept-Encoding"
+pub const HTTP_ACCEPT_LANGUAGE: HttpHeader = "Accept-Language"
+pub const HTTP_ACCEPT_PATCH: HttpHeader = "Accept-Patch"
+pub const HTTP_ACCEPT_POST: HttpHeader = "Accept-Post"
+pub const HTTP_ACCEPT_RANGES: HttpHeader = "Accept-Ranges"
 pub const HTTP_ACCESS_CONTROL_ALLOW_CREDENTIALS: HttpHeader =
-    "Access-Control-Allow-Credentials".as_bytes();
-pub const HTTP_ACCESS_CONTROL_ALLOW_HEADERS: HttpHeader = "Access-Control-Allow-Headers".as_bytes();
-pub const HTTP_ACCESS_CONTROL_ALLOW_METHODS: HttpHeader = "Access-Control-Allow-Methods".as_bytes();
-pub const HTTP_ACCESS_CONTROL_ALLOW_ORIGIN: HttpHeader = "Access-Control-Allow-Origin".as_bytes();
+    "Access-Control-Allow-Credentials"
+pub const HTTP_ACCESS_CONTROL_ALLOW_HEADERS: HttpHeader = "Access-Control-Allow-Headers"
+pub const HTTP_ACCESS_CONTROL_ALLOW_METHODS: HttpHeader = "Access-Control-Allow-Methods"
+pub const HTTP_ACCESS_CONTROL_ALLOW_ORIGIN: HttpHeader = "Access-Control-Allow-Origin"
 pub const HTTP_ACCESS_CONTROL_EXPOSE_HEADERS: HttpHeader =
-    "Access-Control-Expose-Headers".as_bytes();
-pub const HTTP_ACCESS_CONTROL_MAX_AGE: HttpHeader = "Access-Control-Max-Age".as_bytes();
+    "Access-Control-Expose-Headers"
+pub const HTTP_ACCESS_CONTROL_MAX_AGE: HttpHeader = "Access-Control-Max-Age"
 pub const HTTP_ACCESS_CONTROL_REQUEST_HEADERS: HttpHeader =
-    "Access-Control-Request-Headers".as_bytes();
+    "Access-Control-Request-Headers"
 pub const HTTP_ACCESS_CONTROL_REQUEST_METHOD: HttpHeader =
-    "Access-Control-Request-Method".as_bytes();
-pub const HTTP_AGE: HttpHeader = "Age".as_bytes();
-pub const HTTP_ALLOW: HttpHeader = "Allow".as_bytes();
-pub const HTTP_ALTERNATIVE_SERVICE: HttpHeader = "Alt-Svc".as_bytes();
-pub const HTTP_ALTERNATIVE_USED: HttpHeader = "Alt-Used".as_bytes();
-pub const HTTP_AUTHORIZATION: HttpHeader = "Authorization".as_bytes();
-pub const HTTP_CACHE_CONTROL: HttpHeader = "Cache-Control".as_bytes();
-pub const HTTP_CLEAR_SITE_DATA: HttpHeader = "Clear-Site-Data".as_bytes();
-pub const HTTP_CONNECTION: HttpHeader = "Connection".as_bytes();
-pub const HTTP_CONTENT_DIGEST: HttpHeader = "Content-Digest".as_bytes();
-pub const HTTP_CONTENT_DISPOSITION: HttpHeader = "Content-Disposition".as_bytes();
-pub const HTTP_CONTENT_ENCODING: HttpHeader = "Content-Encoding".as_bytes();
-pub const HTTP_CONTENT_LANGUAGE: HttpHeader = "Content-Language".as_bytes();
-pub const HTTP_CONTENT_LENGTH: HttpHeader = "Content-Length".as_bytes();
-pub const HTTP_CONTENT_LOCATION: HttpHeader = "Content-Location".as_bytes();
-pub const HTTP_CONTENT_RANGE: HttpHeader = "Content-Range".as_bytes();
-pub const HTTP_CONTENT_SECURITY_POLICY: HttpHeader = "Content-Security-Policy".as_bytes();
+    "Access-Control-Request-Method"
+pub const HTTP_AGE: HttpHeader = "Age"
+pub const HTTP_ALLOW: HttpHeader = "Allow"
+pub const HTTP_ALTERNATIVE_SERVICE: HttpHeader = "Alt-Svc"
+pub const HTTP_ALTERNATIVE_USED: HttpHeader = "Alt-Used"
+pub const HTTP_AUTHORIZATION: HttpHeader = "Authorization"
+pub const HTTP_CACHE_CONTROL: HttpHeader = "Cache-Control"
+pub const HTTP_CLEAR_SITE_DATA: HttpHeader = "Clear-Site-Data"
+pub const HTTP_CONNECTION: HttpHeader = "Connection"
+pub const HTTP_CONTENT_DIGEST: HttpHeader = "Content-Digest"
+pub const HTTP_CONTENT_DISPOSITION: HttpHeader = "Content-Disposition"
+pub const HTTP_CONTENT_ENCODING: HttpHeader = "Content-Encoding"
+pub const HTTP_CONTENT_LANGUAGE: HttpHeader = "Content-Language"
+pub const HTTP_CONTENT_LENGTH: HttpHeader = "Content-Length"
+pub const HTTP_CONTENT_LOCATION: HttpHeader = "Content-Location"
+pub const HTTP_CONTENT_RANGE: HttpHeader = "Content-Range"
+pub const HTTP_CONTENT_SECURITY_POLICY: HttpHeader = "Content-Security-Policy"
 pub const HTTP_CONTENT_SECURITY_POLICY_REPORT_ONLY: HttpHeader =
-    "Content-Security-Policy-Report-Only".as_bytes();
-pub const HTTP_CONTENT_TYPE: HttpHeader = "Content-Type".as_bytes();
-pub const HTTP_COOKIE: HttpHeader = "Cookie".as_bytes();
-pub const HTTP_CROSS_ORIGIN_EMBEDDER_POLICY: HttpHeader = "Cross-Origin-Embedder-Policy".as_bytes();
-pub const HTTP_CROSS_ORIGIN_OPENER_POLICY: HttpHeader = "Cross-Origin-Opener-Policy".as_bytes();
-pub const HTTP_CROSS_ORIGIN_RESOURCE_POLICY: HttpHeader = "Cross-Origin-Resource-Policy".as_bytes();
-pub const HTTP_DATE: HttpHeader = "Date".as_bytes();
-pub const HTTP_DEVICE_MEMORY: HttpHeader = "Device-Memory".as_bytes();
-pub const HTTP_ENTITY_TAG: HttpHeader = "ETag".as_bytes();
-pub const HTTP_EXPECT: HttpHeader = "Expect".as_bytes();
-pub const HTTP_EXPIRES: HttpHeader = "Expires".as_bytes();
-pub const HTTP_FORWARDED: HttpHeader = "Forwarded".as_bytes();
-pub const HTTP_FROM: HttpHeader = "From".as_bytes();
-pub const HTTP_HOST: HttpHeader = "Host".as_bytes();
-pub const HTTP_IF_MATCH: HttpHeader = "If-Match".as_bytes();
-pub const HTTP_IF_MODIFIED_SINCE: HttpHeader = "If-Modified-Since".as_bytes();
-pub const HTTP_IF_NONE_MATCH: HttpHeader = "If-None-Match".as_bytes();
-pub const HTTP_IF_RANGE: HttpHeader = "If-Range".as_bytes();
-pub const HTTP_IF_UNMODIFIED_SINCE: HttpHeader = "If-Unmodified-Since".as_bytes();
-pub const HTTP_KEEP_ALIVE: HttpHeader = "Keep-Alive".as_bytes();
-pub const HTTP_LAST_MODIFIED: HttpHeader = "Last-Modified".as_bytes();
-pub const HTTP_LINK: HttpHeader = "Link".as_bytes();
-pub const HTTP_LOCATION: HttpHeader = "Location".as_bytes();
-pub const HTTP_MAXIMUM_FORWARDS: HttpHeader = "Max-Forwards".as_bytes();
-pub const HTTP_ORIGIN: HttpHeader = "Origin".as_bytes();
-pub const HTTP_PRIORITY: HttpHeader = "Priority".as_bytes();
-pub const HTTP_PROXY_AUTHENTICATION: HttpHeader = "Proxy-Authenticate".as_bytes();
-pub const HTTP_PROXY_AUTHORIZATION: HttpHeader = "Proxy-Authorization".as_bytes();
-pub const HTTP_RANGE: HttpHeader = "Range".as_bytes();
-pub const HTTP_REFERER: HttpHeader = "Referer".as_bytes();
-pub const HTTP_REFERRER_POLICY: HttpHeader = "Referrer-Policy".as_bytes();
-pub const HTTP_REFRESH: HttpHeader = "Refresh".as_bytes();
-pub const HTTP_REPR_DIGEST: HttpHeader = "Repr-Digest".as_bytes();
-pub const HTTP_RETRY_AFTER: HttpHeader = "Retry-After".as_bytes();
-pub const HTTP_SECURE_FETCH_DESTINATION: HttpHeader = "Sec-Fetch-Dest".as_bytes();
-pub const HTTP_SECURE_FETCH_MODE: HttpHeader = "Sec-Fetch-Mode".as_bytes();
-pub const HTTP_SECURE_FETCH_SITE: HttpHeader = "Sec-Fetch-Site".as_bytes();
-pub const HTTP_SECURE_FETCH_USER: HttpHeader = "Sec-Fetch-User".as_bytes();
-pub const HTTP_SECURE_PURPOSE: HttpHeader = "Sec-Purpose".as_bytes();
-pub const HTTP_SECURE_WEBSOCKET_ACCEPT: HttpHeader = "Sec-WebSocket-Accept".as_bytes();
-pub const HTTP_SECURE_WEBSOCKET_EXTENTIONS: HttpHeader = "Sec-WebSocket-Extensions".as_bytes();
-pub const HTTP_SECURE_WEBSOCKET_KEY: HttpHeader = "Sec-WebSocket-Key".as_bytes();
-pub const HTTP_SECURE_WEBSOCKET_PROTOCOL: HttpHeader = "Sec-WebSocket-Protocol".as_bytes();
-pub const HTTP_SECURE_WEBSOCKET_VERSION: HttpHeader = "Sec-WebSocket-Version".as_bytes();
-pub const HTTP_SERVER: HttpHeader = "Server".as_bytes();
-pub const HTTP_SERVER_TIMING: HttpHeader = "Server-Timing".as_bytes();
-pub const HTTP_SERVICE_WORKER: HttpHeader = "Service-Worker".as_bytes();
-pub const HTTP_SERVICE_WORKER_ALLOWED: HttpHeader = "Service-Worker-Allowed".as_bytes();
+    "Content-Security-Policy-Report-Only"
+pub const HTTP_CONTENT_TYPE: HttpHeader = "Content-Type"
+pub const HTTP_COOKIE: HttpHeader = "Cookie"
+pub const HTTP_CROSS_ORIGIN_EMBEDDER_POLICY: HttpHeader = "Cross-Origin-Embedder-Policy"
+pub const HTTP_CROSS_ORIGIN_OPENER_POLICY: HttpHeader = "Cross-Origin-Opener-Policy"
+pub const HTTP_CROSS_ORIGIN_RESOURCE_POLICY: HttpHeader = "Cross-Origin-Resource-Policy"
+pub const HTTP_DATE: HttpHeader = "Date"
+pub const HTTP_DEVICE_MEMORY: HttpHeader = "Device-Memory"
+pub const HTTP_ENTITY_TAG: HttpHeader = "ETag"
+pub const HTTP_EXPECT: HttpHeader = "Expect"
+pub const HTTP_EXPIRES: HttpHeader = "Expires"
+pub const HTTP_FORWARDED: HttpHeader = "Forwarded"
+pub const HTTP_FROM: HttpHeader = "From"
+pub const HTTP_HOST: HttpHeader = "Host"
+pub const HTTP_IF_MATCH: HttpHeader = "If-Match"
+pub const HTTP_IF_MODIFIED_SINCE: HttpHeader = "If-Modified-Since"
+pub const HTTP_IF_NONE_MATCH: HttpHeader = "If-None-Match"
+pub const HTTP_IF_RANGE: HttpHeader = "If-Range"
+pub const HTTP_IF_UNMODIFIED_SINCE: HttpHeader = "If-Unmodified-Since"
+pub const HTTP_KEEP_ALIVE: HttpHeader = "Keep-Alive"
+pub const HTTP_LAST_MODIFIED: HttpHeader = "Last-Modified"
+pub const HTTP_LINK: HttpHeader = "Link"
+pub const HTTP_LOCATION: HttpHeader = "Location"
+pub const HTTP_MAXIMUM_FORWARDS: HttpHeader = "Max-Forwards"
+pub const HTTP_ORIGIN: HttpHeader = "Origin"
+pub const HTTP_PRIORITY: HttpHeader = "Priority"
+pub const HTTP_PROXY_AUTHENTICATION: HttpHeader = "Proxy-Authenticate"
+pub const HTTP_PROXY_AUTHORIZATION: HttpHeader = "Proxy-Authorization"
+pub const HTTP_RANGE: HttpHeader = "Range"
+pub const HTTP_REFERER: HttpHeader = "Referer"
+pub const HTTP_REFERRER_POLICY: HttpHeader = "Referrer-Policy"
+pub const HTTP_REFRESH: HttpHeader = "Refresh"
+pub const HTTP_REPR_DIGEST: HttpHeader = "Repr-Digest"
+pub const HTTP_RETRY_AFTER: HttpHeader = "Retry-After"
+pub const HTTP_SECURE_FETCH_DESTINATION: HttpHeader = "Sec-Fetch-Dest"
+pub const HTTP_SECURE_FETCH_MODE: HttpHeader = "Sec-Fetch-Mode"
+pub const HTTP_SECURE_FETCH_SITE: HttpHeader = "Sec-Fetch-Site"
+pub const HTTP_SECURE_FETCH_USER: HttpHeader = "Sec-Fetch-User"
+pub const HTTP_SECURE_PURPOSE: HttpHeader = "Sec-Purpose"
+pub const HTTP_SECURE_WEBSOCKET_ACCEPT: HttpHeader = "Sec-WebSocket-Accept"
+pub const HTTP_SECURE_WEBSOCKET_EXTENTIONS: HttpHeader = "Sec-WebSocket-Extensions"
+pub const HTTP_SECURE_WEBSOCKET_KEY: HttpHeader = "Sec-WebSocket-Key"
+pub const HTTP_SECURE_WEBSOCKET_PROTOCOL: HttpHeader = "Sec-WebSocket-Protocol"
+pub const HTTP_SECURE_WEBSOCKET_VERSION: HttpHeader = "Sec-WebSocket-Version"
+pub const HTTP_SERVER: HttpHeader = "Server"
+pub const HTTP_SERVER_TIMING: HttpHeader = "Server-Timing"
+pub const HTTP_SERVICE_WORKER: HttpHeader = "Service-Worker"
+pub const HTTP_SERVICE_WORKER_ALLOWED: HttpHeader = "Service-Worker-Allowed"
 pub const HTTP_SERVICE_WORKER_NAVIGATION_PRELOAD: HttpHeader =
-    "Service-Worker-Navigation-Preload".as_bytes();
-pub const HTTP_SET_COOKIE: HttpHeader = "Set-Cookie".as_bytes();
-pub const HTTP_SOURCEMAP: HttpHeader = "SourceMap".as_bytes();
-pub const HTTP_STRICT_TRANSPORT_SECURITY: HttpHeader = "Strict-Transport-Security".as_bytes();
-pub const HTTP_TRANSFER_ENCODING_TYPE: HttpHeader = "TE".as_bytes();
-pub const HTTP_TIMING_ALLOW_ORIGIN: HttpHeader = "Timing-Allow-Origin".as_bytes();
-pub const HTTP_TRAILER: HttpHeader = "Trailer".as_bytes();
-pub const HTTP_TRANSFER_ENCODING: HttpHeader = "Transfer-Encoding".as_bytes();
-pub const HTTP_UPGRADE: HttpHeader = "Upgrade".as_bytes();
-pub const HTTP_UPGRADE_REQUESTS: HttpHeader = "Upgrade-Insecure-Requests".as_bytes();
-pub const HTTP_USER_AGENT: HttpHeader = "User-Agent".as_bytes();
-pub const HTTP_VARY: HttpHeader = "Vary".as_bytes();
-pub const HTTP_VIA_PROXY: HttpHeader = "Via".as_bytes();
-pub const HTTP_WANT_CONTENT_DIGEST: HttpHeader = "Want-Content-Digest".as_bytes();
-pub const HTTP_WANT_REPRESENTATION_DIGEST: HttpHeader = "Want-Repr-Digest".as_bytes();
-pub const HTTP_WWW_AUTHENTICATE: HttpHeader = "WWW-Authenticate".as_bytes();
-pub const HTTP_X_CONTENT_TYPE_OPTIONS: HttpHeader = "X-Content-Type-Options".as_bytes();
-pub const HTTP_X_FRAME_OPTIONS: HttpHeader = "X-Frame-Options".as_bytes();
+    "Service-Worker-Navigation-Preload"
+pub const HTTP_SET_COOKIE: HttpHeader = "Set-Cookie"
+pub const HTTP_SOURCEMAP: HttpHeader = "SourceMap"
+pub const HTTP_STRICT_TRANSPORT_SECURITY: HttpHeader = "Strict-Transport-Security"
+pub const HTTP_TRANSFER_ENCODING_TYPE: HttpHeader = "TE"
+pub const HTTP_TIMING_ALLOW_ORIGIN: HttpHeader = "Timing-Allow-Origin"
+pub const HTTP_TRAILER: HttpHeader = "Trailer"
+pub const HTTP_TRANSFER_ENCODING: HttpHeader = "Transfer-Encoding"
+pub const HTTP_UPGRADE: HttpHeader = "Upgrade"
+pub const HTTP_UPGRADE_REQUESTS: HttpHeader = "Upgrade-Insecure-Requests"
+pub const HTTP_USER_AGENT: HttpHeader = "User-Agent"
+pub const HTTP_VARY: HttpHeader = "Vary"
+pub const HTTP_VIA_PROXY: HttpHeader = "Via"
+pub const HTTP_WANT_CONTENT_DIGEST: HttpHeader = "Want-Content-Digest"
+pub const HTTP_WANT_REPRESENTATION_DIGEST: HttpHeader = "Want-Repr-Digest"
+pub const HTTP_WWW_AUTHENTICATE: HttpHeader = "WWW-Authenticate"
+pub const HTTP_X_CONTENT_TYPE_OPTIONS: HttpHeader = "X-Content-Type-Options"
+pub const HTTP_X_FRAME_OPTIONS: HttpHeader = "X-Frame-Options"
 
 // Hypertext Transfer Protocol Header Vector
 pub fn headers_vector() -> Vec<HttpHeader> {

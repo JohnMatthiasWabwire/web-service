@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use std::{primitive::u8, vec::Vec};
+use std::{primitive::str, vec::Vec};
 
 use crate::hypertext_transfer::http_connection::HttpConnection;
 
@@ -8,17 +8,18 @@ use super::{
     http_headers::HttpHeader,
     http_methods::HttpMethod,
     http_security_directives::HttpSecurityDirective,
-    http_status_codes::{HttpStatusCode, HttpStatusText},
+    http_status_codes::HttpStatusCode,
+    http_status_texts::HttpStatusText,
     http_versions::HttpVersion,
 };
 
 // Hypertext Transfer Protocol Response Definition
 pub struct HttpResponse {
     pub connection: HttpConnection,
-    pub body: &'static [u8],
+    pub body: &'static str,
     pub headers: Vec<HttpHeader>,
     pub method: HttpMethod,
-    pub security_directives: HttpSecurityDirective,
+    pub security_directives: Vec<HttpSecurityDirective>,
     pub status_code: HttpStatusCode,
     pub status_text: HttpStatusText,
     pub version: HttpVersion,

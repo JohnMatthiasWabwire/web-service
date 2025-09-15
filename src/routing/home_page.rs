@@ -15,7 +15,8 @@ use std::{
 
 use crate::hypertext_transfer::{
     http_headers::HTTP_CONTENT_LENGTH,
-    http_status_codes::{HTTP_OK, HTTP_TWO_HUNDRED},
+    http_status_codes::HTTP_OK,
+    http_status_texts::HTTP_TWO_HUNDRED,
     http_versions::HTTP_VERSION_ONE,
 };
 
@@ -34,13 +35,15 @@ pub fn web_main(mut transmission_stream: TcpStream) -> () {
             writeln!(
                 transmission_stream,
                 "{:#?} {:#?} {:#?}",
-                HTTP_VERSION_ONE, HTTP_TWO_HUNDRED, HTTP_OK
+                HTTP_VERSION_ONE.as_bytes(), 
+                HTTP_TWO_HUNDRED.as_bytes(), 
+                HTTP_OK.as_bytes()
             )
             .unwrap();
             writeln!(
                 transmission_stream,
                 "{:#?}: {:#?}",
-                HTTP_CONTENT_LENGTH,
+                HTTP_CONTENT_LENGTH.as_bytes(),
                 content_length.to_ne_bytes()
             )
             .unwrap();
