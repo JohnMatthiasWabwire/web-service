@@ -1,6 +1,7 @@
 use std::{
     primitive::{bool, char, str},
     str::Lines,
+    string::String,
     vec::Vec,
 };
 
