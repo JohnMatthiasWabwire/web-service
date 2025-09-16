@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use std::{primitive::str, vec::Vec};
+use std::{collections::HashMap, primitive::str};
 
 // Hypertext Transfer Protocol Status Code Definition
 pub type HttpStatusCode = &'static str;
@@ -79,8 +79,7 @@ pub const HTTP_EARLY_HINTS: HttpStatusText = "Early Hints";
 pub const HTTP_OK: HttpStatusText = "OK";
 pub const HTTP_CREATED: HttpStatusText = "Created";
 pub const HTTP_ACCEPTED: HttpStatusText = "Accepted";
-pub const HTTP_NON_AUTHORITATIVE_INFORMATION: HttpStatusText =
-    "Non-Authoritative Information";
+pub const HTTP_NON_AUTHORITATIVE_INFORMATION: HttpStatusText = "Non-Authoritative Information";
 pub const HTTP_NO_CONTENT: HttpStatusText = "No Content";
 pub const HTTP_RESET_CONTENT: HttpStatusText = "Reset Content";
 pub const HTTP_PARTIAL_CONTENT: HttpStatusText = "Partial Content";
@@ -101,8 +100,7 @@ pub const HTTP_FORBIDDEN: HttpStatusText = "Forbidden";
 pub const HTTP_NOT_FOUND: HttpStatusText = "Not Found";
 pub const HTTP_METHOD_NOT_ALLOWED: HttpStatusText = "Method Not Allowed";
 pub const HTTP_NOT_ACCEPTABLE: HttpStatusText = "Not Acceptable";
-pub const HTTP_PROXY_AUTHENTICATION_REQUIRED: HttpStatusText =
-    "Proxy Authentication Required";
+pub const HTTP_PROXY_AUTHENTICATION_REQUIRED: HttpStatusText = "Proxy Authentication Required";
 pub const HTTP_REQUEST_TIMEOUT: HttpStatusText = "Request Timeout";
 pub const HTTP_CONFLICT: HttpStatusText = "Conflict";
 pub const HTTP_GONE: HttpStatusText = "Gone";
@@ -122,10 +120,8 @@ pub const HTTP_TOO_EARLY: HttpStatusText = "Too Early";
 pub const HTTP_UPGRADE_REQUIRED: HttpStatusText = "Upgrade Required";
 pub const HTTP_PRECONDITION_REQUIRED: HttpStatusText = "Precondition Required";
 pub const HTTP_TOO_MANY_REQUESTS: HttpStatusText = "Too Many Requests";
-pub const HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE: HttpStatusText =
-    "Request Header Fields Too Large";
-pub const HTTP_UNAVAILABLE_FOR_LEGAL_REASONS: HttpStatusText =
-    "Unavailable For Legal Reasons";
+pub const HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE: HttpStatusText = "Request Header Fields Too Large";
+pub const HTTP_UNAVAILABLE_FOR_LEGAL_REASONS: HttpStatusText = "Unavailable For Legal Reasons";
 pub const HTTP_INTERNAL_SERVER_ERROR: HttpStatusText = "Internal Server Error";
 pub const HTTP_NOT_IMPLEMENTED: HttpStatusText = "Not Implemented";
 pub const HTTP_BAD_GATEWAY: HttpStatusText = "Bad Gateway";
@@ -136,8 +132,7 @@ pub const HTTP_VARIANT_ALSO_NEGOTIATES: HttpStatusText = "Variant Also Negotiate
 pub const HTTP_INSUFFICENT_STORAGE: HttpStatusText = "Insufficient Storage";
 pub const HTTP_LOOP_DETECTED: HttpStatusText = "Loop Detected";
 pub const HTTP_NOT_EXTENDED: HttpStatusText = "Not Extended";
-pub const HTTP_NETWORK_AUTHENTICATION_REQUIRED: HttpStatusText =
-    "Network Authentication Required";
+pub const HTTP_NETWORK_AUTHENTICATION_REQUIRED: HttpStatusText = "Network Authentication Required";
 
 // Hypertext Transfer Protocol Status Code and Status Text Hash Map
 pub fn status_codes_map() -> HashMap<HttpStatusCode, HttpStatusText> {
@@ -216,4 +211,3 @@ pub fn status_codes_map() -> HashMap<HttpStatusCode, HttpStatusText> {
 
     return http_status_codes;
 }
-
