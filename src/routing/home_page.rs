@@ -15,8 +15,7 @@ use std::{
 
 use crate::hypertext_transfer::{
     http_headers::HTTP_CONTENT_LENGTH,
-    http_status_codes::HTTP_OK,
-    http_status_texts::HTTP_TWO_HUNDRED,
+    http_status_codes::{HTTP_OK, HTTP_TWO_HUNDRED},
     http_versions::HTTP_VERSION_ONE,
 };
 

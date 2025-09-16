@@ -13,8 +13,7 @@ use std::{
 };
 
 use crate::{
-    http_status_codes::HttpStatusCode,
-    http_status_texts::HttpStatusText,
+    http_status_codes::{HttpStatusCode, HttpStatusText},
     logs::logger::LogLevel,
 };
 

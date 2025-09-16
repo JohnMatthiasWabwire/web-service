@@ -8,8 +8,7 @@ use super::{
     http_headers::HttpHeader,
     http_methods::HttpMethod,
     http_security_directives::HttpSecurityDirective,
-    http_status_codes::HttpStatusCode,
-    http_status_texts::HttpStatusText,
+    http_status_codes::{HttpStatusCode, HttpStatusText},
     http_versions::HttpVersion,
 };
 
