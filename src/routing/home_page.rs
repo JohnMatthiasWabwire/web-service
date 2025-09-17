@@ -61,6 +61,7 @@ pub fn web_main(mut transmission_stream: TcpStream) -> () {
             )
             .unwrap();
             writeln!(transmission_stream, "{}: htnet/0.2.0", HTTP_SERVER).unwrap();
+            writeln!(transmission_stream, "").unwrap();
             writeln!(transmission_stream, "{}", file_buffer).unwrap();
         }
         Err(error) => {
