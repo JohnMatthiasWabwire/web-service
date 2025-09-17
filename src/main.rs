@@ -10,6 +10,7 @@ mod jwt;
 mod logs;
 mod routing;
 mod shared;
+mod tasks;
 
 mod service;
 use service::application_service::web_service;
