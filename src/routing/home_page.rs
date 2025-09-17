@@ -14,7 +14,10 @@ use std::{
 };
 
 use crate::hypertext_transfer::{
-    http_headers::{HTTP_CONTENT_LENGTH, HTTP_CONTENT_TYPE},
+    http_headers::{
+        HTTP_ACCEPT, HTTP_CONNECTION, HTTP_CONTENT_LENGTH, HTTP_CONTENT_TYPE, HTTP_HOST,
+        HTTP_SERVER, HTTP_USER_AGENT,
+    },
     http_status_codes::{HTTP_OK, HTTP_TWO_HUNDRED},
     http_versions::HTTP_VERSION_ONE,
 };
@@ -37,9 +40,18 @@ pub fn web_main(mut transmission_stream: TcpStream) -> () {
                 HTTP_VERSION_ONE, HTTP_TWO_HUNDRED, HTTP_OK
             )
             .unwrap();
+            writeln!(transmission_stream, "{}: localhost:7878", HTTP_HOST).unwrap();
+            writeln!(transmission_stream, "{}: Linux/6.14.0-29", HTTP_USER_AGENT).unwrap();
+            writeln!(transmission_stream, "{}: close", HTTP_CONNECTION).unwrap();
             writeln!(
                 transmission_stream,
-                "{}: text/javascript; charset=utf-8",
+                "{}: application/json;charset=UTF-8,text/plain;charset=UTF-8",
+                HTTP_ACCEPT
+            )
+            .unwrap();
+            writeln!(
+                transmission_stream,
+                "{}: text/javascript;charset=utf-8",
                 HTTP_CONTENT_TYPE
             )
             .unwrap();
@@ -49,6 +61,7 @@ pub fn web_main(mut transmission_stream: TcpStream) -> () {
                 HTTP_CONTENT_LENGTH, content_length
             )
             .unwrap();
+            writeln!(transmission_stream, "{}: htnet/0.2.0", HTTP_SERVER).unwrap();
             writeln!(transmission_stream, "{}", file_buffer).unwrap();
         }
         Err(error) => {
