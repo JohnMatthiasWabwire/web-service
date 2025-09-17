@@ -16,7 +16,7 @@ use std::{
 use crate::hypertext_transfer::{
     http_headers::{
         HTTP_ACCEPT, HTTP_CONNECTION, HTTP_CONTENT_LENGTH, HTTP_CONTENT_TYPE, HTTP_HOST,
-        HTTP_SERVER, HTTP_USER_AGENT,
+        HTTP_SERVER,
     },
     http_status_codes::{HTTP_OK, HTTP_TWO_HUNDRED},
     http_versions::HTTP_VERSION_ONE,
@@ -41,7 +41,6 @@ pub fn web_main(mut transmission_stream: TcpStream) -> () {
             )
             .unwrap();
             writeln!(transmission_stream, "{}: localhost:7878", HTTP_HOST).unwrap();
-            writeln!(transmission_stream, "{}: Linux/6.14.0-29", HTTP_USER_AGENT).unwrap();
             writeln!(transmission_stream, "{}: close", HTTP_CONNECTION).unwrap();
             writeln!(
                 transmission_stream,
