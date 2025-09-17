@@ -3,7 +3,7 @@ use std::{
     io::{BufReader, Error, Read, Write},
     net::{TcpListener, TcpStream},
     path::PathBuf,
-    primitive::usize,
+    primitive::char,
     process::exit,
     result::{
         Result,
@@ -31,7 +31,7 @@ pub fn home_route(transmission_listener: Result<TcpListener, Error>) -> () {
                 let source_path: PathBuf = PathBuf::from("./web/build/main.js");
                 let source_file: Result<File, Error> = File::open(source_path);
                 let mut file_buffer: String = String::new();
-                let content_length: usize = file_buffer.len();
+                let file_characters: Vec<char> = file_buffer.chars().collect();
 
                 match source_file {
                     Ok(file) => {
@@ -45,7 +45,7 @@ pub fn home_route(transmission_listener: Result<TcpListener, Error>) -> () {
                         )
                         .unwrap();
                         writeln!(stream, "{}: localhost:7878", HTTP_HOST).unwrap();
-                        writeln!(stream, "{}: close", HTTP_CONNECTION).unwrap();
+                        writeln!(stream, "{}: keep-alive", HTTP_CONNECTION).unwrap();
                         writeln!(
                             stream,
                             "{}: application/json;charset=UTF-8,text/plain;charset=UTF-8",
@@ -54,11 +54,12 @@ pub fn home_route(transmission_listener: Result<TcpListener, Error>) -> () {
                         .unwrap();
                         writeln!(
                             stream,
-                            "{}: text/javascript;charset=utf-8",
+                            "{}: text/javascript;charset=UTF-8",
                             HTTP_CONTENT_TYPE
                         )
                         .unwrap();
-                        writeln!(stream, "{}: {:#?}", HTTP_CONTENT_LENGTH, content_length).unwrap();
+                        writeln!(stream, "{}: {}", HTTP_CONTENT_LENGTH, file_characters.len())
+                            .unwrap();
                         writeln!(stream, "{}: htnet/0.2.0", HTTP_SERVER).unwrap();
                         writeln!(stream, "").unwrap();
                         writeln!(stream, "{}", file_buffer).unwrap();

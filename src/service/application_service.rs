@@ -44,7 +44,7 @@ pub fn web_service() -> () {
     let mut standard_output: StdoutLock = stdout().lock();
 
     writeln!(standard_output, "Service Listening on Port: 7878").unwrap();
-    manage_connection(listener);
+    home_route(listener);
 
     return ();
 }
