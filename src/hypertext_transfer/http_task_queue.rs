@@ -1,3 +1,25 @@
 #![allow(dead_code)]
 
-struct HttpTaskQueue {}
+use std::{fs::File, primitive::bool, thread::Thread, vec::Vec};
+
+use crate::hypertext_transfer::http_response::HttpResponse;
+
+// Hypertext Transfer Protocol Task Definition
+pub struct HttpTask {
+    pub completed: bool,
+    pub response: HttpResponse,
+    pub thread: Thread,
+}
+
+// Hypertext Transfer Protocol Task Queue Definition
+pub struct HttpTaskQueue {
+    pub queue: Vec<HttpTask>,
+}
+
+// Hypertext Transfer Protocol Task Result Storage Definition
+pub struct HttpTaskResultStore {
+    pub storage_unit: File,
+}
+
+// Hypertext Transfer Protocol Task Scheduler Definition
+pub struct HttpTaskScheduler {}
