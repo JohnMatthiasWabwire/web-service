@@ -6,7 +6,6 @@ use std::{
         Result,
         Result::{Err, Ok},
     },
-    thread,
 };
 
 use crate::routing::home_page::home_route;

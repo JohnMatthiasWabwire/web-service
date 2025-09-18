@@ -1,8 +1,10 @@
 #![allow(dead_code)]
 
-use std::{fs::File, primitive::bool, thread::Thread, vec::Vec};
+use std::{
+    collections::HashMap, primitive::bool, result::Result, string::String, thread::Thread, vec::Vec,
+};
 
-use crate::hypertext_transfer::http_response::HttpResponse;
+use crate::{errors::http_error::HttpError, hypertext_transfer::http_response::HttpResponse};
 
 // Hypertext Transfer Protocol Task Definition
 pub struct HttpTask {
@@ -16,9 +18,9 @@ pub struct HttpTaskQueue {
     pub queue: Vec<HttpTask>,
 }
 
-// Hypertext Transfer Protocol Task Result Storage Definition
+// Hypertext Transfer Protocol Task Result Storage Cache Definition
 pub struct HttpTaskResultStore {
-    pub storage_unit: File,
+    pub cache: HashMap<String, Result<HttpResponse, HttpError>>,
 }
 
 // Hypertext Transfer Protocol Task Scheduler Definition

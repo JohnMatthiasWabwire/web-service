@@ -10,7 +10,6 @@ use std::{
         Result::{Err, Ok},
     },
     string::String,
-    thread,
 };
 
 use crate::hypertext_transfer::{
