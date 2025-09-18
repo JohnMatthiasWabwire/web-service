@@ -2,6 +2,8 @@ pub mod http_client;
 
 pub mod http_connection;
 
+pub mod http_event_queue;
+
 pub mod http_headers;
 
 pub mod http_methods;
@@ -21,6 +23,8 @@ pub mod http_server;
 pub mod http_status_codes;
 
 pub mod http_syntax_tree;
+
+pub mod http_task_queue;
 
 pub mod http_tokenizer;
 
