@@ -1,7 +1,7 @@
 use std::{
     env::args,
     io::{StdoutLock, Write, stdout},
-    primitive::{bool, char, str},
+    primitive::{bool, char, str, usize},
     process::exit,
     str::Lines,
     vec::Vec,
@@ -28,6 +28,20 @@ pub struct ArgumentLexer {
     pub argument_tokens: Vec<ArgumentToken>,
 }
 
+// Advance to a Position of the Argument Lexer
+pub fn advance_to_position(argument_lexer: &ArgumentLexer, index: usize) -> char {
+    let characters: Vec<char> = argument_lexer.argument_source.chars().collect();
+
+    return characters[index];
+}
+
+// Current Position of the Argument Lexer
+pub fn current_position(argument_lexer: &ArgumentLexer) -> char {
+    let characters: Vec<char> = argument_lexer.argument_source.chars().collect();
+
+    return characters[0];
+}
+
 // Returns True if Lexer Position is at End of File
 pub fn end_of_file(argument_lexer: &ArgumentLexer) -> bool {
     let source: Vec<char> = argument_lexer.argument_source.chars().collect();
@@ -44,6 +58,13 @@ pub fn flag_character(source_arguments: &str) -> bool {
     } else {
         return false;
     }
+}
+
+// Advance to the Next Position of the Argument Lexer
+pub fn next_position(argument_lexer: &ArgumentLexer) -> char {
+    let characters: Vec<char> = argument_lexer.argument_source.chars().collect();
+
+    return characters.iter().next().unwrap().clone();
 }
 
 // Print Argument Token
