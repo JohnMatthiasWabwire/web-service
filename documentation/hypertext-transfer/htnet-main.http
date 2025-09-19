@@ -1,0 +1,6 @@
+GET / HTTP/1.1
+Host: localhost:7878
+Connection: keep-alive
+Accept: application/json;charset=UTF-8,text/plain;charset=UTF-8
+Content-Type: text/javascript;charset=UTF-8 
+Server: htnet/0.2.0

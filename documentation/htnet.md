@@ -6,7 +6,7 @@
 | --------------------- | ----------------------------------------------- |
 | config                | Configure Server with server-configuration.env  | - (In Progress)
 | exit (Command Prompt) | Exit Service                                    |
-| help                  | Print List of Commands and Flags                |
+| help                  | Print Commands and Flags                        |
 | serve                 | Serve Web Applcation                            |
 | version               | Print Version Number                            |
 
@@ -15,6 +15,6 @@
 | Flag | Description                                     |
 | ---- | ----------------------------------------------- |
 | --c  | Configure Server with server-configuration.yaml | - (In Progress)
-| --h  | Print List of Commands and Flags                |
+| --h  | Print Commands and Flags                        |
 | --s  | Serve Web Applcation                            |
 | --v  | Print Version Number                            |

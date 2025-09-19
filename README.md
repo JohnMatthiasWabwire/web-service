@@ -6,7 +6,6 @@
 [MDN]: https://developer.mozilla.org/en-US/docs/Web/API
 [Minio Database]: https://min.io/
 [Postgres Database]: https://www.postgresql.org/
-[Remote Sync]: https://rsync.samba.org/documentation.html
 [Rust Language]: https://rust-lang.org
 [SSH]: https://openssh.com/
 [SystemD]: https://systemd.io/
@@ -44,7 +43,6 @@ Hyaena Technologies Web Service
 - [Deno Bundler][Deno]
 - [System Daemon][SystemD]
 - [Secure Shell Protocol][SSH]
-- [RSync][Remote Sync]
 - [Mozilla Developer Network Web Documentation][MDN]
 - [Web Consortium Documentation][W3C]
 - [Web Authentication][WebAuthn] - (In Progress)
