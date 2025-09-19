@@ -16,12 +16,12 @@ use crate::{
 fn alphabetic_character_test() -> () {
     let characters: Vec<CharacterToken> = characters_vector();
     let escape_sequences: Vec<EscapeToken> = escape_tokens_vector();
-    let lowercase: bool = alphabetic_character(characters[0]);
-    let null: bool = alphabetic_character(escape_sequences[4]);
+    let lowercase: bool = alphabetic_character(characters[0].to_string());
+    let null: bool = alphabetic_character(escape_sequences[4].to_string());
     let numbers: Vec<NumberToken> = numbers_vector();
-    let number: bool = alphabetic_character(numbers[4]);
-    let uppercase: bool = alphabetic_character(characters[26]);
-    let whitespace: bool = alphabetic_character(" ");
+    let number: bool = alphabetic_character(numbers[4].to_string());
+    let uppercase: bool = alphabetic_character(characters[26].to_string());
+    let whitespace: bool = alphabetic_character(" ".to_string());
 
     assert_eq!(null, false);
     assert_eq!(number, false);
@@ -35,12 +35,12 @@ fn alphabetic_character_test() -> () {
 fn integer_character_test() -> () {
     let characters: Vec<CharacterToken> = characters_vector();
     let escape_sequences: Vec<EscapeToken> = escape_tokens_vector();
-    let lowercase: bool = integer_character(characters[0]);
-    let null: bool = integer_character(escape_sequences[4]);
+    let lowercase: bool = integer_character(characters[0].to_string());
+    let null: bool = integer_character(escape_sequences[4].to_string());
     let numbers: Vec<NumberToken> = numbers_vector();
-    let number: bool = integer_character(numbers[4]);
-    let uppercase: bool = integer_character(characters[26]);
-    let whitespace: bool = integer_character(" ");
+    let number: bool = integer_character(numbers[4].to_string());
+    let uppercase: bool = integer_character(characters[26].to_string());
+    let whitespace: bool = integer_character(" ".to_string());
 
     assert_eq!(null, false);
     assert_eq!(number, true);
@@ -54,12 +54,12 @@ fn integer_character_test() -> () {
 fn null_character_test() -> () {
     let characters: Vec<CharacterToken> = characters_vector();
     let escape_sequences: Vec<EscapeToken> = escape_tokens_vector();
-    let lowercase: bool = null_character(characters[0]);
-    let null: bool = null_character(escape_sequences[4]);
+    let lowercase: bool = null_character(characters[0].to_string());
+    let null: bool = null_character(escape_sequences[4].to_string());
     let numbers: Vec<NumberToken> = numbers_vector();
-    let number: bool = null_character(numbers[4]);
-    let uppercase: bool = null_character(characters[26]);
-    let whitespace: bool = null_character(" ");
+    let number: bool = null_character(numbers[4].to_string());
+    let uppercase: bool = null_character(characters[26].to_string());
+    let whitespace: bool = null_character(" ".to_string());
 
     assert_eq!(null, true);
     assert_eq!(number, false);
@@ -73,12 +73,12 @@ fn null_character_test() -> () {
 fn whitespace_character_test() -> () {
     let characters: Vec<CharacterToken> = characters_vector();
     let escape_sequences: Vec<EscapeToken> = escape_tokens_vector();
-    let lowercase: bool = whitespace_character(characters[0]);
-    let null: bool = whitespace_character(escape_sequences[4]);
+    let lowercase: bool = whitespace_character(characters[0].to_string());
+    let null: bool = whitespace_character(escape_sequences[4].to_string());
     let numbers: Vec<NumberToken> = numbers_vector();
-    let number: bool = whitespace_character(numbers[4]);
-    let uppercase: bool = whitespace_character(characters[26]);
-    let whitespace: bool = whitespace_character(" ");
+    let number: bool = whitespace_character(numbers[4].to_string());
+    let uppercase: bool = whitespace_character(characters[26].to_string());
+    let whitespace: bool = whitespace_character(" ".to_string());
 
     assert_eq!(null, false);
     assert_eq!(number, false);

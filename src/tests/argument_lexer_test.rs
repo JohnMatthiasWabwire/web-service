@@ -15,15 +15,15 @@ use crate::{
 pub fn flag_character_test() -> () {
     let characters: Vec<CharacterToken> = characters_vector();
     let escape_sequences: Vec<EscapeToken> = escape_tokens_vector();
-    let lowercase: bool = flag_character(characters[0]);
-    let null: bool = flag_character(escape_sequences[4]);
+    let lowercase: bool = flag_character(characters[0].to_string());
+    let null: bool = flag_character(escape_sequences[4].to_string());
     let numbers: Vec<NumberToken> = numbers_vector();
-    let number: bool = flag_character(numbers[4]);
+    let number: bool = flag_character(numbers[4].to_string());
     let operators: Vec<OperatorToken> = operators_vector();
-    let decrement: bool = flag_character(operators[11]);
-    let subtraction: bool = flag_character(operators[39]);
-    let uppercase: bool = flag_character(characters[26]);
-    let whitespace: bool = flag_character(" ");
+    let decrement: bool = flag_character(operators[11].to_string());
+    let subtraction: bool = flag_character(operators[39].to_string());
+    let uppercase: bool = flag_character(characters[26].to_string());
+    let whitespace: bool = flag_character(" ".to_string());
 
     assert_eq!(decrement, true);
     assert_eq!(null, false);
