@@ -14,9 +14,9 @@ pub fn print_help_message() -> () {
     )
     .unwrap();
     writeln!(standard_output, "exit (Command Prompt)\t\t Exit Service").unwrap();
-    writeln!(standard_output, "help\t\t\t Print Commands and Flags").unwrap();
+    writeln!(standard_output, "help\t\t Print Commands and Flags").unwrap();
     writeln!(standard_output, "serve\t\t Serve Web Applcation").unwrap();
-    writeln!(standard_output, "version\t\t\t Print Version Number").unwrap();
+    writeln!(standard_output, "version\t\t Print Version Number").unwrap();
     writeln!(standard_output, "").unwrap();
     writeln!(standard_output, "Flag:\t\t Description:").unwrap();
     writeln!(standard_output, "").unwrap();
