@@ -16,7 +16,6 @@ pub const KEYWORD_TOKEN: TokenType = "KEYWORD";
 pub const NUMBER_TOKEN: TokenType = "NUMBER";
 pub const NULL_TOKEN: TokenType = "NULL";
 pub const OPERATOR_TOKEN: TokenType = "OPERATOR";
-pub const UNKNOWN_TOKEN: TokenType = "UNKNOWN";
 
 // Token Type Vector
 pub fn token_types_vector() -> Vec<TokenType> {
@@ -31,7 +30,6 @@ pub fn token_types_vector() -> Vec<TokenType> {
         NUMBER_TOKEN,
         NULL_TOKEN,
         OPERATOR_TOKEN,
-        UNKNOWN_TOKEN,
     ]);
 
     return token_types;

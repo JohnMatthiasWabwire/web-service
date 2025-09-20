@@ -15,7 +15,7 @@ use super::token_lexer::{
 };
 
 // Tokenize Command Line Arguments
-pub fn tokenize(source_tokens: &'static String) {
+pub fn tokenize(source_tokens: &'static String) -> Vec<Token> {
     let escape_tokens: Vec<EscapeToken> = escape_tokens_vector();
     let token_vector: Vec<Token> = Vec::new();
     let lexer: TokenLexer = TokenLexer {
@@ -51,5 +51,5 @@ pub fn tokenize(source_tokens: &'static String) {
         }
     }
 
-    return ();
+    return tokens;
 }
