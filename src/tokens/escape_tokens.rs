@@ -10,7 +10,7 @@ pub const APOSTROPHE_TOKEN: EscapeToken = "\'";
 pub const BACKSLASH_TOKEN: EscapeToken = "\\";
 pub const CARRIAGE_RETURN_TOKEN: EscapeToken = "\r";
 pub const NEW_LINE_TOKEN: EscapeToken = "\n";
-pub const NULL_TOKEN: EscapeToken = "\0";
+pub const NULL_CHARACTER_TOKEN: EscapeToken = "\0";
 pub const QUOTATION_MARK_TOKEN: EscapeToken = "\"";
 pub const TAB_TOKEN: EscapeToken = "\t";
 
@@ -21,7 +21,7 @@ pub fn escape_tokens_vector() -> Vec<EscapeToken> {
         BACKSLASH_TOKEN,
         CARRIAGE_RETURN_TOKEN,
         NEW_LINE_TOKEN,
-        NULL_TOKEN,
+        NULL_CHARACTER_TOKEN,
         QUOTATION_MARK_TOKEN,
         TAB_TOKEN,
     ]);
