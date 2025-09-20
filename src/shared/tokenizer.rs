@@ -10,8 +10,8 @@ use crate::tokens::{
 };
 
 use super::token_lexer::{
-    Token, TokenLexer, alphabetic_character, end_of_file, flag_character, integer_character,
-    null_character, token, unknown_token, whitespace_character,
+    Token, TokenLexer, alphabetic_character, flag_character, integer_character, null_character,
+    token, unknown_token, whitespace_character,
 };
 
 // Tokenize Command Line Arguments
@@ -24,20 +24,19 @@ pub fn tokenize(source_tokens: &'static String) {
         source: source_tokens,
         tokens: token_vector,
     };
-    let eof: bool = end_of_file(&lexer);
     let mut characters: Vec<char> = lexer.characters;
     let alphabetic: bool = alphabetic_character(characters[0].to_string());
     let flag: bool = flag_character(characters[0].to_string());
     let integer: bool = integer_character(characters[0].to_string());
     let null: bool = null_character(characters[0].to_string());
-    let whitespace: bool = whitespace_character(characters[0].to_string());
     let mut tokens: Vec<Token> = lexer.tokens;
     let token_types: Vec<TokenType> = token_types_vector();
+    let whitespace: bool = whitespace_character(characters[0].to_string());
 
     while characters.len() > 0 {
         if alphabetic == true {
             tokens.push(token(characters.remove(0).to_string(), token_types[0]));
-        } else if eof == true {
+        } else if characters.len() == 0 {
             tokens.push(token(escape_tokens[4].to_string(), token_types[3]));
         } else if flag == true {
             tokens.push(token(characters.remove(0).to_string(), token_types[5]));
