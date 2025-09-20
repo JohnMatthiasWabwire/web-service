@@ -9,8 +9,9 @@ use std::{
         Result,
         Result::{Err, Ok},
     },
-    time::SystemTime,
 };
+
+use time::Time;
 
 use crate::{
     hypertext_transfer::http_status_codes::{HttpStatusCode, HttpStatusText},
@@ -19,7 +20,7 @@ use crate::{
 
 // Hypertext Transfer Error Definition
 pub struct HttpError {
-    pub current_time: SystemTime,
+    pub current_time: Time,
     pub log_level: LogLevel,
     pub status_code: HttpStatusCode,
     pub status_text: HttpStatusText,
@@ -31,7 +32,7 @@ pub fn print_error(http_error: &HttpError) -> () {
 
     writeln!(standard_output, "{}", http_error.status_code).unwrap();
     writeln!(standard_output, "{}", http_error.status_text).unwrap();
-    writeln!(standard_output, "Time: {:#?}", http_error.current_time).unwrap();
+    writeln!(standard_output, "Time: {}", http_error.current_time).unwrap();
 
     return ();
 }
@@ -45,7 +46,7 @@ pub fn create_error_log(http_error: &HttpError, log_path: PathBuf) -> () {
             writeln!(file, "Log Leve: {}", http_error.log_level).unwrap();
             writeln!(file, "{}", http_error.status_code).unwrap();
             writeln!(file, "{}", http_error.status_text).unwrap();
-            writeln!(file, "Time: {:#?}", http_error.current_time).unwrap();
+            writeln!(file, "Time: {}", http_error.current_time).unwrap();
         }
         Err(error) => {
             eprintln!("Error Creating Log File: {}", error);
@@ -66,7 +67,7 @@ pub fn write_error_log(http_error: &HttpError, log_path: PathBuf) -> () {
             writeln!(file, "Log Level: {}", http_error.log_level).unwrap();
             writeln!(file, "{}", http_error.status_code).unwrap();
             writeln!(file, "{}", http_error.status_text).unwrap();
-            writeln!(file, "Time: {:#?}", http_error.current_time).unwrap();
+            writeln!(file, "Time: {}", http_error.current_time).unwrap();
         }
         Err(error) => {
             eprintln!("Error Writing To Log File: {}", error);

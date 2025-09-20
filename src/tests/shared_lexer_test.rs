@@ -20,8 +20,8 @@ fn alphabetic_character_test() -> () {
     let escape_sequences: Vec<EscapeToken> = escape_tokens_vector();
     let lowercase: bool = alphabetic_character(characters[0].to_string());
     let null: bool = alphabetic_character(escape_sequences[4].to_string());
-    let numbers: Vec<NumberToken> = numbers_vector();
-    let number: bool = alphabetic_character(numbers[4].to_string());
+    let integers: Vec<NumberToken> = numbers_vector();
+    let number: bool = alphabetic_character(integers[4].to_string());
     let uppercase: bool = alphabetic_character(characters[26].to_string());
     let whitespace: bool = alphabetic_character(" ".to_string());
 
@@ -39,8 +39,8 @@ pub fn flag_character_test() -> () {
     let escape_sequences: Vec<EscapeToken> = escape_tokens_vector();
     let lowercase: bool = flag_character(characters[0].to_string());
     let null: bool = flag_character(escape_sequences[4].to_string());
-    let numbers: Vec<NumberToken> = numbers_vector();
-    let number: bool = flag_character(numbers[4].to_string());
+    let integers: Vec<NumberToken> = numbers_vector();
+    let number: bool = flag_character(integers[4].to_string());
     let operators: Vec<OperatorToken> = operators_vector();
     let decrement: bool = flag_character(operators[11].to_string());
     let subtraction: bool = flag_character(operators[39].to_string());
@@ -63,8 +63,8 @@ fn integer_character_test() -> () {
     let escape_sequences: Vec<EscapeToken> = escape_tokens_vector();
     let lowercase: bool = integer_character(characters[0].to_string());
     let null: bool = integer_character(escape_sequences[4].to_string());
-    let numbers: Vec<NumberToken> = numbers_vector();
-    let number: bool = integer_character(numbers[4].to_string());
+    let integers: Vec<NumberToken> = numbers_vector();
+    let number: bool = integer_character(integers[4].to_string());
     let uppercase: bool = integer_character(characters[26].to_string());
     let whitespace: bool = integer_character(" ".to_string());
 
@@ -82,8 +82,8 @@ fn null_character_test() -> () {
     let escape_sequences: Vec<EscapeToken> = escape_tokens_vector();
     let lowercase: bool = null_character(characters[0].to_string());
     let null: bool = null_character(escape_sequences[4].to_string());
-    let numbers: Vec<NumberToken> = numbers_vector();
-    let number: bool = null_character(numbers[4].to_string());
+    let integers: Vec<NumberToken> = numbers_vector();
+    let number: bool = null_character(integers[4].to_string());
     let uppercase: bool = null_character(characters[26].to_string());
     let whitespace: bool = null_character(" ".to_string());
 
@@ -101,8 +101,8 @@ fn whitespace_character_test() -> () {
     let escape_sequences: Vec<EscapeToken> = escape_tokens_vector();
     let lowercase: bool = whitespace_character(characters[0].to_string());
     let null: bool = whitespace_character(escape_sequences[4].to_string());
-    let numbers: Vec<NumberToken> = numbers_vector();
-    let number: bool = whitespace_character(numbers[4].to_string());
+    let integers: Vec<NumberToken> = numbers_vector();
+    let number: bool = whitespace_character(integers[4].to_string());
     let uppercase: bool = whitespace_character(characters[26].to_string());
     let whitespace: bool = whitespace_character(" ".to_string());
 
