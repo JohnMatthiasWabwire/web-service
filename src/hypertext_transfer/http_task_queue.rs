@@ -7,7 +7,7 @@ use crate::hypertext_transfer::http_response::HttpResponse;
 // Hypertext Transfer Protocol Task Definition
 pub struct HttpTask {
     pub completed: bool,
-    pub response: HttpResponse,
+    pub task: HttpResponse,
     pub thread: Thread,
 }
 
@@ -17,10 +17,10 @@ pub struct HttpTaskQueue {
 }
 
 // Hypertext Transfer Protocol Task
-pub fn http_task(finished: bool, message: HttpResponse, worker: Thread) -> HttpTask {
+pub fn http_task(finished: bool, response: HttpResponse, worker: Thread) -> HttpTask {
     let task: HttpTask = HttpTask {
         completed: finished,
-        response: message,
+        task: response,
         thread: worker,
     };
 
