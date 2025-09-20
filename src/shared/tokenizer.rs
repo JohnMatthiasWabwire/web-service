@@ -45,7 +45,7 @@ pub fn tokenize(source_tokens: &'static String) {
         } else if null == true {
             tokens.push(token(characters.remove(0).to_string(), token_types[8]));
         } else if whitespace == true {
-            characters.iter().next().unwrap();
+            characters.remove(0);
         } else {
             unknown_token(characters[0].to_string());
         }
