@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use std::{primitive::str, vec::Vec};
+use std::{string::String, vec::Vec};
 
 use crate::hypertext_transfer::http_connection::HttpConnection;
 
@@ -15,7 +15,7 @@ use super::{
 // Hypertext Transfer Protocol Response Definition
 pub struct HttpResponse {
     pub connection: HttpConnection,
-    pub body: &'static str,
+    pub body: String,
     pub headers: Vec<HttpHeader>,
     pub method: HttpMethod,
     pub security_directives: Vec<HttpSecurityDirective>,

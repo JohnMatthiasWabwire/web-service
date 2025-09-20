@@ -15,3 +15,14 @@ pub struct HttpTask {
 pub struct HttpTaskQueue {
     pub queue: Vec<HttpTask>,
 }
+
+// Hypertext Transfer Protocol Task
+pub fn http_task(finished: bool, message: HttpResponse, worker: Thread) -> HttpTask {
+    let task: HttpTask = HttpTask {
+        completed: finished,
+        response: message,
+        thread: worker,
+    };
+
+    return task;
+}

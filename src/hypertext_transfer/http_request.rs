@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use std::{primitive::str, vec::Vec};
+use std::{string::String, vec::Vec};
 
 use crate::hypertext_transfer::http_connection::HttpConnection;
 
@@ -15,10 +15,10 @@ use super::{
 // Hypertext Transfer Protocol Request Definition
 pub struct HttpRequest {
     pub connection: HttpConnection,
-    pub body: &'static str,
+    pub body: String,
     pub headers: Vec<HttpHeader>,
     pub method: HttpMethod,
-    pub resource_locator: &'static str,
+    pub resource_locator: String,
     pub security_directives: Vec<HttpSecurityDirective>,
     pub status_code: HttpStatusCode,
     pub status_text: HttpStatusText,
