@@ -40,9 +40,7 @@ pub fn token(value: String, kind: TokenType) -> Token {
 
 // Advance to a Position of the Lexer
 pub fn advance_to_position(token_lexer: &TokenLexer, character_index: usize) -> char {
-    let characters: Vec<char> = token_lexer.characters.clone();
-
-    return characters[character_index];
+    return token_lexer.characters[character_index];
 }
 
 // Returns True if Alphabetic Character
@@ -52,16 +50,12 @@ pub fn alphabetic_character(source_tokens: String) -> bool {
 
 // Current Position of the Lexer
 pub fn current_position(token_lexer: &TokenLexer) -> char {
-    let characters: Vec<char> = token_lexer.characters.clone();
-
-    return characters[0];
+    return token_lexer.characters[0];
 }
 
 // Returns True if Lexer Position is at the End of the File
 pub fn end_of_file(token_lexer: &TokenLexer) -> bool {
-    let source: Vec<char> = token_lexer.characters.clone();
-
-    return source.len() == 0;
+    return token_lexer.characters.len() == 0;
 }
 
 // Returns True if Flag Character
@@ -84,9 +78,7 @@ pub fn integer_character(source_tokens: String) -> bool {
 
 // Advance to the Next Position of the Lexer
 pub fn next_position(token_lexer: &TokenLexer) -> char {
-    let characters: Vec<char> = token_lexer.characters.clone();
-
-    return characters.iter().next().unwrap().clone();
+    return token_lexer.characters.iter().next().unwrap().clone();
 }
 
 // Returns True if Null Character
