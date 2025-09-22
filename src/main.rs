@@ -7,7 +7,6 @@ mod hypertext_transfer;
 mod json;
 mod jwt;
 mod logs;
-mod routing;
 mod shared;
 
 mod service;
