@@ -17,6 +17,7 @@ use crate::hypertext_transfer::{
         HTTP_ACCEPT, HTTP_CONNECTION, HTTP_CONTENT_LENGTH, HTTP_CONTENT_TYPE, HTTP_HOST,
         HTTP_SERVER,
     },
+    http_mime_types::{HTTP_JAVASCRIPT_MIME_TYPE, HTTP_JSON_MIME_TYPE, HTTP_PLAIN_MIME_TYPE},
     http_status_codes::{HTTP_OK, HTTP_TWO_HUNDRED},
     http_versions::HTTP_VERSION_ONE,
 };
@@ -47,14 +48,14 @@ pub fn home_route(transmission_listener: Result<TcpListener, Error>) -> () {
                         writeln!(stream, "{}: keep-alive", HTTP_CONNECTION).unwrap();
                         writeln!(
                             stream,
-                            "{}: application/json;charset=UTF-8,text/plain;charset=UTF-8",
-                            HTTP_ACCEPT
+                            "{}: {},{}",
+                            HTTP_ACCEPT, HTTP_JSON_MIME_TYPE, HTTP_PLAIN_MIME_TYPE
                         )
                         .unwrap();
                         writeln!(
                             stream,
-                            "{}: text/javascript;charset=UTF-8",
-                            HTTP_CONTENT_TYPE
+                            "{}: {}",
+                            HTTP_CONTENT_TYPE, HTTP_JAVASCRIPT_MIME_TYPE
                         )
                         .unwrap();
                         writeln!(stream, "{}: {}", HTTP_CONTENT_LENGTH, file_characters.len())

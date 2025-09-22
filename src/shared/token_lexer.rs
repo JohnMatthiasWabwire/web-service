@@ -1,7 +1,6 @@
 use std::{
     io::{StdoutLock, Write, stdout},
     primitive::{bool, char, usize},
-    process::exit,
     str::Lines,
     string::String,
     vec::Vec,
@@ -103,8 +102,6 @@ pub fn unknown_token(source_token: String) -> () {
     let mut standard_output: StdoutLock = stdout().lock();
 
     writeln!(standard_output, "Uknown Token: {}", source_token).unwrap();
-    eprintln!("Error(1) - Exiting Hyaena Technologies Web Service");
-    exit(1)
 }
 
 // Returns True if Whitespace
