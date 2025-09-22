@@ -1,3 +1,3 @@
 #![allow(dead_code)]
 
-struct YAMLParser {}
+struct YamlParser {}

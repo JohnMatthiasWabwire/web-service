@@ -1,12 +1,15 @@
 use std::{
     io::{StdoutLock, Write, stdout},
     primitive::{bool, char, usize},
+    process::exit,
     str::Lines,
     string::String,
+    time::SystemTime,
     vec::Vec,
 };
 
 use crate::tokens::{
+    errors::lexer_error::{LexerError, print_error},
     escape_tokens::{EscapeToken, escape_tokens_vector},
     number_tokens::{NumberToken, numbers_vector},
     operator_tokens::{OperatorToken, operators_vector},
@@ -99,9 +102,16 @@ pub fn print_token(source_token: &Token) -> () {
 
 // Unknow Token
 pub fn unknown_token(source_token: String) -> () {
-    let mut standard_output: StdoutLock = stdout().lock();
+    let error_string: &'static str = "Error(1) - Exiting Hyaena Technologies Web Service";
+    let time: SystemTime = SystemTime::now();
+    let error: LexerError = LexerError {
+        current_time: time,
+        error_message: error_string.to_string(),
+    };
 
-    writeln!(standard_output, "Uknown Token: {}", source_token).unwrap();
+    eprintln!("Uknown Token: {}", source_token);
+    print_error(&error);
+    exit(1);
 }
 
 // Returns True if Whitespace

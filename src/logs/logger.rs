@@ -65,12 +65,12 @@ pub fn log_levels_vector() -> Vec<LogLevel> {
 }
 
 // Print Log to Standard Output
-pub fn print_log(log: &StructuredLog) -> () {
+pub fn print_log(structured_log: &StructuredLog) -> () {
     let mut standard_output: StdoutLock = stdout().lock();
 
-    writeln!(standard_output, "Log Level: {}", log.log_level).unwrap();
-    writeln!(standard_output, "{}", log.log_message).unwrap();
-    writeln!(standard_output, "Time: {:#?}", log.current_time).unwrap();
+    writeln!(standard_output, "Log Level: {}", structured_log.log_level).unwrap();
+    writeln!(standard_output, "{}", structured_log.log_message).unwrap();
+    writeln!(standard_output, "Time: {:#?}", structured_log.current_time).unwrap();
 
     return ();
 }

@@ -1,17 +1,12 @@
 use std::{
     primitive::{bool, char},
-    process::exit,
     string::String,
-    time::SystemTime,
     vec::Vec,
 };
 
-use crate::{
-    errors::lexer_error::{LexerError, print_error},
-    tokens::{
-        escape_tokens::{EscapeToken, escape_tokens_vector},
-        token_type::{TokenType, token_types_vector},
-    },
+use crate::tokens::{
+    escape_tokens::{EscapeToken, escape_tokens_vector},
+    token_type::{TokenType, token_types_vector},
 };
 
 use super::token_lexer::{
@@ -21,19 +16,13 @@ use super::token_lexer::{
 
 // Tokenizer
 pub fn tokenize(source_tokens: &'static String) -> Vec<Token> {
-    let error_string: &'static str = "Error(1) - Exiting Hyaena Technologies Web Service";
     let escape_tokens: Vec<EscapeToken> = escape_tokens_vector();
-    let time: SystemTime = SystemTime::now();
     let token_vector: Vec<Token> = Vec::new();
     let lexer: TokenLexer = TokenLexer {
         characters: source_tokens.chars().collect(),
         lines: source_tokens.lines(),
         source: source_tokens,
         tokens: token_vector,
-    };
-    let error: LexerError = LexerError {
-        current_time: time,
-        error_message: error_string.to_string(),
     };
     let mut characters: Vec<char> = lexer.characters;
     let alphabetic: bool = alphabetic_character(characters[0].to_string());
@@ -59,8 +48,6 @@ pub fn tokenize(source_tokens: &'static String) -> Vec<Token> {
             characters.remove(0);
         } else {
             unknown_token(characters[0].to_string());
-            print_error(&error);
-            exit(1);
         }
     }
 

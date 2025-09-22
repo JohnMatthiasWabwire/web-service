@@ -1,3 +1,3 @@
 #![allow(dead_code)]
 
-struct JWTTokenizer {}
+struct JwtTokenizer {}
