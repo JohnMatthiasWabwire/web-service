@@ -12,6 +12,8 @@ pub mod http_methods;
 
 pub mod http_lexer;
 
+pub mod http_mime_types;
+
 pub mod http_parser;
 
 pub mod http_request;
