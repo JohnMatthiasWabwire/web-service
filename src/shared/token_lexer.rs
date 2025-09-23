@@ -1,15 +1,12 @@
 use std::{
     io::{StdoutLock, Write, stdout},
     primitive::{bool, char, usize},
-    process::exit,
     str::Lines,
     string::String,
-    time::SystemTime,
     vec::Vec,
 };
 
 use crate::tokens::{
-    errors::lexer_error::{LexerError, print_error},
     escape_tokens::{EscapeToken, escape_tokens_vector},
     number_tokens::{NumberToken, numbers_vector},
     operator_tokens::{OperatorToken, operators_vector},
@@ -80,7 +77,7 @@ pub fn integer_character(source_tokens: String) -> bool {
 
 // Advance to the Next Position of the Lexer
 pub fn next_position(token_lexer: &TokenLexer) -> char {
-    return token_lexer.characters.iter().next().unwrap().clone();
+    return token_lexer.source.chars().next().unwrap();
 }
 
 // Returns True if Null Character
@@ -102,16 +99,7 @@ pub fn print_token(source_token: &Token) -> () {
 
 // Unknow Token
 pub fn unknown_token(source_token: String) -> () {
-    let error_string: &'static str = "Error(1) - Exiting Hyaena Technologies Web Service";
-    let time: SystemTime = SystemTime::now();
-    let error: LexerError = LexerError {
-        current_time: time,
-        error_message: error_string.to_string(),
-    };
-
     eprintln!("Uknown Token: {}", source_token);
-    print_error(&error);
-    exit(1);
 }
 
 // Returns True if Whitespace

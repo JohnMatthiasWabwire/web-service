@@ -1,75 +1,33 @@
 #![allow(dead_code)]
 
 use std::{
-    fs::File,
-    io::{Error, Write},
-    path::PathBuf,
-    process::exit,
-    result::{
-        Result,
-        Result::{Err, Ok},
-    },
+    fmt::{Debug, Display, Formatter, Result},
     time::SystemTime,
 };
 
-use crate::{
-    hypertext_transfer::http_status_codes::{HttpStatusCode, HttpStatusText},
-    logs::logger::LogLevel,
-};
+use crate::hypertext_transfer::http_status_codes::{HttpStatusCode, HttpStatusText};
 
 // Hypertext Transfer Error Definition
 pub struct HttpError {
-    pub current_time: SystemTime,
-    pub log_level: LogLevel,
-    pub status_code: HttpStatusCode,
-    pub status_text: HttpStatusText,
+    pub code: HttpStatusCode,
+    pub message: HttpStatusText,
+    pub time: SystemTime,
 }
 
-// Print Hypertext Transfer Error to Standard Output
-pub fn print_error(http_error: &HttpError) -> () {
-    eprintln!("{}", http_error.status_code);
-    eprintln!("{}", http_error.status_text);
-    eprintln!("Time: {:#?}", http_error.current_time);
-
-    return ();
-}
-
-// Create Log File and Write an Error to the Log File
-pub fn create_error_log(http_error: &HttpError, log_path: PathBuf) -> () {
-    let log_file: Result<File, Error> = File::create(log_path);
-
-    match log_file {
-        Ok(mut file) => {
-            writeln!(file, "Log Leve: {}", http_error.log_level).unwrap();
-            writeln!(file, "{}", http_error.status_code).unwrap();
-            writeln!(file, "{}", http_error.status_text).unwrap();
-            writeln!(file, "Time: {:#?}", http_error.current_time).unwrap();
-        }
-        Err(error) => {
-            eprintln!("Error Creating Log File: {}", error);
-            exit(1);
-        }
+// Implement std::fmt::Display for Hypertext Transfer Protocol Error
+impl Display for HttpError {
+    fn fmt(&self, formatter: &mut Formatter) -> Result {
+        write!(formatter, "Error Event")
     }
-    return ();
 }
 
-// Open Log File and Write an Error to the Log File
-pub fn write_error_log(http_error: &HttpError, log_path: PathBuf) -> () {
-    let log_file: Result<File, Error> = File::open(log_path);
-
-    match log_file {
-        Ok(mut file) => {
-            writeln!(file, "").unwrap();
-            writeln!(file, "").unwrap();
-            writeln!(file, "Log Level: {}", http_error.log_level).unwrap();
-            writeln!(file, "{}", http_error.status_code).unwrap();
-            writeln!(file, "{}", http_error.status_text).unwrap();
-            writeln!(file, "Time: {:#?}", http_error.current_time).unwrap();
-        }
-        Err(error) => {
-            eprintln!("Error Writing To Log File: {}", error);
-            exit(1);
-        }
+// Implement std::fmt::Debug for Hypertext Transfer Protocol Error
+impl Debug for HttpError {
+    fn fmt(&self, formatter: &mut Formatter) -> Result {
+        write!(
+            formatter,
+            "Status Code: {}\n Status Text: {}\n Time: {:#?}",
+            self.code, self.message, self.time
+        )
     }
-    return ();
 }

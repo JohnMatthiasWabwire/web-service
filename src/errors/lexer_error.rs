@@ -1,17 +1,27 @@
 #![allow(dead_code)]
 
-use std::{string::String, time::SystemTime};
+use std::{
+    fmt::{Debug, Display, Formatter, Result},
+    string::String,
+    time::SystemTime,
+};
 
 // Lexer Error Definition
 pub struct LexerError {
-    pub current_time: SystemTime,
-    pub error_message: String,
+    pub message: String,
+    pub time: SystemTime,
 }
 
-// Print Lexer Error to Standard Output
-pub fn print_error(lexer_error: &LexerError) -> () {
-    eprintln!("{}", lexer_error.error_message);
-    eprintln!("Time: {:#?}", lexer_error.current_time);
+// Implement std::fmt::Display for Lexer Error
+impl Display for LexerError {
+    fn fmt(&self, formatter: &mut Formatter) -> Result {
+        write!(formatter, "Unkown Token")
+    }
+}
 
-    return ();
+// Implement std::fmt::Debug for Lexer Error
+impl Debug for LexerError {
+    fn fmt(&self, formatter: &mut Formatter) -> Result {
+        write!(formatter, "{}\n Time: {:#?}", self.message, self.time)
+    }
 }

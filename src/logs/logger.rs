@@ -27,9 +27,9 @@ pub const LOG_LEVEL_WARN: LogLevel = "WARN";
 
 // Structured Log Definition
 pub struct StructuredLog {
-    pub current_time: SystemTime,
-    pub log_level: LogLevel,
-    pub log_message: String,
+    pub level: LogLevel,
+    pub message: String,
+    pub time: SystemTime,
 }
 
 // Create Log File and Write to the Log File
@@ -38,9 +38,9 @@ pub fn create_log(structured_log: &StructuredLog, log_path: PathBuf) -> () {
 
     match &mut log_file {
         Ok(log) => {
-            writeln!(log, "Log Level: {}", structured_log.log_level).unwrap();
-            writeln!(log, "{}", structured_log.log_message).unwrap();
-            writeln!(log, "Time: {:#?}", structured_log.current_time).unwrap();
+            writeln!(log, "Log Level: {}", structured_log.level).unwrap();
+            writeln!(log, "{}", structured_log.message).unwrap();
+            writeln!(log, "Time: {:#?}", structured_log.time).unwrap();
         }
         Err(error) => {
             eprintln!("Error Creating Log File: {}", error);
@@ -68,9 +68,9 @@ pub fn log_levels_vector() -> Vec<LogLevel> {
 pub fn print_log(structured_log: &StructuredLog) -> () {
     let mut standard_output: StdoutLock = stdout().lock();
 
-    writeln!(standard_output, "Log Level: {}", structured_log.log_level).unwrap();
-    writeln!(standard_output, "{}", structured_log.log_message).unwrap();
-    writeln!(standard_output, "Time: {:#?}", structured_log.current_time).unwrap();
+    writeln!(standard_output, "Log Level: {}", structured_log.level).unwrap();
+    writeln!(standard_output, "{}", structured_log.message).unwrap();
+    writeln!(standard_output, "Time: {:#?}", structured_log.time).unwrap();
 
     return ();
 }
@@ -83,9 +83,9 @@ pub fn write_log(structured_log: &StructuredLog, log_path: PathBuf) -> () {
         Ok(log) => {
             writeln!(log, "").unwrap();
             writeln!(log, "").unwrap();
-            writeln!(log, "Log Level: {}", structured_log.log_level).unwrap();
-            writeln!(log, "{}", structured_log.log_message).unwrap();
-            writeln!(log, "Time: {:#?}", structured_log.current_time).unwrap();
+            writeln!(log, "Log Level: {}", structured_log.level).unwrap();
+            writeln!(log, "{}", structured_log.message).unwrap();
+            writeln!(log, "Time: {:#?}", structured_log.time).unwrap();
         }
         Err(error) => {
             eprintln!("Error Writing to Log File: {}", error);
