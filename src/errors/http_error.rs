@@ -14,13 +14,6 @@ pub struct HttpError {
     pub time: SystemTime,
 }
 
-// Implement std::fmt::Display for Hypertext Transfer Protocol Error
-impl Display for HttpError {
-    fn fmt(&self, formatter: &mut Formatter) -> Result {
-        write!(formatter, "Error Event")
-    }
-}
-
 // Implement std::fmt::Debug for Hypertext Transfer Protocol Error
 impl Debug for HttpError {
     fn fmt(&self, formatter: &mut Formatter) -> Result {
@@ -29,5 +22,12 @@ impl Debug for HttpError {
             "Status Code: {}\n Status Text: {}\n Time: {:#?}",
             self.code, self.message, self.time
         )
+    }
+}
+
+// Implement std::fmt::Display for Hypertext Transfer Protocol Error
+impl Display for HttpError {
+    fn fmt(&self, formatter: &mut Formatter) -> Result {
+        write!(formatter, "Error Event")
     }
 }
