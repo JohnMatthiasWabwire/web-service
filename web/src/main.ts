@@ -24,5 +24,5 @@ function main(): HTMLHtmlElement {
   document.appendChild(HTML_DOCUMENT_BODY);
 }
 
-main()
+main();
 

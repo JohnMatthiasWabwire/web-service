@@ -1,6 +1,6 @@
 use std::{
     fs::File,
-    io::{BufReader, Error, Read, Write},
+    io::{BufReader, Error, Read, StdoutLock, Write, stdout},
     net::{TcpListener, TcpStream},
     path::PathBuf,
     process::exit,
@@ -66,6 +66,31 @@ pub fn home_route(transmission_listener: Result<TcpListener, Error>) -> () {
                         exit(1);
                     }
                 };
+            }
+        }
+        Err(error) => {
+            eprintln!("Error Initializing Transmission Listener: {}", error);
+            exit(1);
+        }
+    };
+
+    return ();
+}
+
+// Hypertext Transfer Protocol Connection Management
+pub fn manage_connection(transmission_listener: Result<TcpListener, Error>) -> () {
+    match transmission_listener {
+        Ok(listener) => {
+            for transmission_stream in listener.incoming() {
+                let stream: TcpStream = transmission_stream.unwrap();
+                let mut standard_output: StdoutLock = stdout().lock();
+                let mut buffered_reader: BufReader<&TcpStream> = BufReader::new(&stream);
+                let mut stream_buffer: String = String::new();
+
+                buffered_reader.read_to_string(&mut stream_buffer).unwrap();
+                writeln!(standard_output, "Hypertext Tranfer Protocol Request: ").unwrap();
+                writeln!(standard_output, "").unwrap();
+                writeln!(standard_output, "{}", stream_buffer).unwrap();
             }
         }
         Err(error) => {
