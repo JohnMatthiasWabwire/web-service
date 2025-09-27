@@ -27,7 +27,7 @@ pub fn home_route(transmission_listener: Result<TcpListener, Error>) -> () {
         Ok(listener) => {
             for transmission_stream in listener.incoming() {
                 let mut stream: TcpStream = transmission_stream.unwrap();
-                let source_path: PathBuf = PathBuf::from("./web/build/main.js");
+                let source_path: PathBuf = PathBuf::from("./web/src/main.html");
                 let source_file: Result<File, Error> = File::open(source_path);
                 let mut file_buffer: String = String::new();
 
