@@ -20,7 +20,7 @@ path = "src/main.rs"
 [dependencies]
 flate2 = "1.1.2"
 hyper = { version = "1.7.0", features = ["full"] }
-rustls = { version = "0.23.31", features = ["std"] }
+rustls = { version = "0.23.32", features = ["std"] }
 serde_json = { version = "1.0.145", features = ["std"] }
 time = { version = "0.3.44", features = ["std"] }
 

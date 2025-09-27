@@ -3,7 +3,6 @@ use std::{
     io::{BufReader, Error, Read, Write},
     net::{TcpListener, TcpStream},
     path::PathBuf,
-    primitive::char,
     process::exit,
     result::{
         Result,
@@ -31,7 +30,6 @@ pub fn home_route(transmission_listener: Result<TcpListener, Error>) -> () {
                 let source_path: PathBuf = PathBuf::from("./web/build/main.js");
                 let source_file: Result<File, Error> = File::open(source_path);
                 let mut file_buffer: String = String::new();
-                let file_characters: Vec<char> = file_buffer.chars().collect();
 
                 match source_file {
                     Ok(file) => {
@@ -58,8 +56,7 @@ pub fn home_route(transmission_listener: Result<TcpListener, Error>) -> () {
                             HTTP_CONTENT_TYPE, HTTP_JAVASCRIPT_MIME_TYPE
                         )
                         .unwrap();
-                        writeln!(stream, "{}: {}", HTTP_CONTENT_LENGTH, file_characters.len())
-                            .unwrap();
+                        writeln!(stream, "{}: {}", HTTP_CONTENT_LENGTH, file_buffer.len()).unwrap();
                         writeln!(stream, "{}: htnet/0.2.0", HTTP_SERVER).unwrap();
                         writeln!(stream, "").unwrap();
                         writeln!(stream, "{}", file_buffer).unwrap();
