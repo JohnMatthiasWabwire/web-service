@@ -10,7 +10,6 @@
 [Rust Language]: https://rust-lang.org
 [SSH]: https://openssh.com/
 [SystemD]: https://systemd.io/
-[Traefik]: https://traefik.io/traefik/
 [TypeScript Language]: https://www.typescriptlang.org/docs/
 [WebAuthn]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API
 [WebGL]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
@@ -50,7 +49,6 @@ Hyaena Technologies Web Service
 - [Web Authentication][WebAuthn] - (In Progress)
 - [Web Graphics Library][WebGL] - (In Progress)
 - [Web GPU][WebGPU] - (In Progress)
-- [Traefik Proxy][Traefik] - (In Progress)
 - [Command Line Documentation][CLIDoc]
 
 ### Databases
