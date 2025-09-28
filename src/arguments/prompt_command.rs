@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::{
     io::{Stdin, StdoutLock, Write, stdin, stdout},
     process::exit,
