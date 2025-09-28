@@ -5,6 +5,7 @@
 [JWT]: https://jwt.io/
 [MDN]: https://developer.mozilla.org/en-US/docs/Web/API
 [Minio Database]: https://min.io/
+[Network Control]: https://networkmanager.dev/
 [Postgres Database]: https://www.postgresql.org/
 [Rust Language]: https://rust-lang.org
 [SSH]: https://openssh.com/
@@ -43,6 +44,7 @@ Hyaena Technologies Web Service
 - [Deno Bundler][Deno]
 - [System Daemon][SystemD]
 - [Secure Shell Protocol][SSH]
+- [Network Manager][Network Control]
 - [Mozilla Developer Network Web Documentation][MDN]
 - [Web Consortium Documentation][W3C]
 - [Web Authentication][WebAuthn] - (In Progress)
