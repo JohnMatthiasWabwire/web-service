@@ -16,7 +16,7 @@ use crate::hypertext_transfer::{
         HTTP_ACCEPT, HTTP_CONNECTION, HTTP_CONTENT_LENGTH, HTTP_CONTENT_TYPE, HTTP_HOST,
         HTTP_SERVER,
     },
-    http_mime_types::{HTTP_JAVASCRIPT_MIME_TYPE, HTTP_JSON_MIME_TYPE, HTTP_PLAIN_MIME_TYPE},
+    http_mime_types::{HTTP_HTML_MIME_TYPE, HTTP_JSON_MIME_TYPE, HTTP_PLAIN_MIME_TYPE},
     http_status_codes::{HTTP_OK, HTTP_TWO_HUNDRED},
     http_versions::HTTP_VERSION_ONE,
 };
@@ -27,7 +27,7 @@ pub fn home_route(transmission_listener: Result<TcpListener, Error>) -> () {
         Ok(listener) => {
             for transmission_stream in listener.incoming() {
                 let mut stream: TcpStream = transmission_stream.unwrap();
-                let source_path: PathBuf = PathBuf::from("./web/build/main.js");
+                let source_path: PathBuf = PathBuf::from("./web/src/main.html");
                 let source_file: File = File::open(source_path).unwrap();
                 let mut source_buffer: String = String::new();
                 let mut source_reader: BufReader<&File> = BufReader::new(&source_file);
@@ -47,12 +47,7 @@ pub fn home_route(transmission_listener: Result<TcpListener, Error>) -> () {
                     HTTP_ACCEPT, HTTP_JSON_MIME_TYPE, HTTP_PLAIN_MIME_TYPE
                 )
                 .unwrap();
-                writeln!(
-                    stream,
-                    "{}: {}",
-                    HTTP_CONTENT_TYPE, HTTP_JAVASCRIPT_MIME_TYPE
-                )
-                .unwrap();
+                writeln!(stream, "{}: {}", HTTP_CONTENT_TYPE, HTTP_HTML_MIME_TYPE).unwrap();
                 writeln!(stream, "{}: {}", HTTP_CONTENT_LENGTH, source_buffer.len()).unwrap();
                 writeln!(stream, "{}: htnet/0.2.0", HTTP_SERVER).unwrap();
                 writeln!(stream, "").unwrap();
