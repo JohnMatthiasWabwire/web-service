@@ -12,8 +12,6 @@
 [SystemD]: https://systemd.io/
 [TypeScript Language]: https://www.typescriptlang.org/docs/
 [WebAuthn]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API
-[WebGL]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
-[WebGPU]: https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API
 [W3C]: https://w3.org/TR/
 [YAML]: https://yaml.org/
 
@@ -47,8 +45,6 @@ Hyaena Technologies Web Service
 - [Mozilla Developer Network Web Documentation][MDN]
 - [Web Consortium Documentation][W3C]
 - [Web Authentication][WebAuthn] - (In Progress)
-- [Web Graphics Library][WebGL] - (In Progress)
-- [Web GPU][WebGPU] - (In Progress)
 - [Command Line Documentation][CLIDoc]
 
 ### Databases
