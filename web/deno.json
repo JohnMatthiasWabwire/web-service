@@ -1,8 +1,0 @@
-{   
-  "lint": {
-    "include": ["./src/*.js", "./src/*.ts"]
-  },
-  "name": "hyaena-technologies-web",
-  "version": "0.2.0"
-}
-
