@@ -29,10 +29,10 @@ Hyaena Technologies Web Service
 
 ## Features
 
-- Environment Variables - (In Progress)
+- Environment Variables
 - [JavaScript Object Notation][JSON]
 - [JavaScript Object Notation Web Token][JWT] - (In Progress)
-- [YAML Ain't Markup Language][YAML] - (In Progress)
+- [YAML Ain't Markup Language][YAML]
 
 ## Build
 
