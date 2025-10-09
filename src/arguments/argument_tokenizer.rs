@@ -10,15 +10,15 @@ use crate::tokens::{
 };
 
 use super::argument_lexer::{
-    Token, TokenLexer, alphabetic_character, flag_character, integer_character, null_character,
-    token, unknown_token, whitespace_character,
+    ArgumentLexer, ArgumentToken, alphabetic_character, flag_character, integer_character,
+    null_character, token, unknown_token, whitespace_character,
 };
 
 // Tokenizer
-pub fn tokenize(source_tokens: &'static String) -> Vec<Token> {
+pub fn tokenize(source_tokens: &'static String) -> Vec<ArgumentToken> {
     let escape_tokens: Vec<EscapeToken> = escape_tokens_vector();
-    let token_vector: Vec<Token> = Vec::new();
-    let lexer: TokenLexer = TokenLexer {
+    let token_vector: Vec<ArgumentToken> = Vec::new();
+    let lexer: ArgumentLexer = ArgumentLexer {
         characters: source_tokens.chars().collect(),
         lines: source_tokens.lines(),
         source: source_tokens,
@@ -29,7 +29,7 @@ pub fn tokenize(source_tokens: &'static String) -> Vec<Token> {
     let flag: bool = flag_character(characters[0].to_string());
     let integer: bool = integer_character(characters[0].to_string());
     let null: bool = null_character(characters[0].to_string());
-    let mut tokens: Vec<Token> = lexer.tokens;
+    let mut tokens: Vec<ArgumentToken> = lexer.tokens;
     let token_types: Vec<TokenType> = token_types_vector();
     let whitespace: bool = whitespace_character(characters[0].to_string());
 

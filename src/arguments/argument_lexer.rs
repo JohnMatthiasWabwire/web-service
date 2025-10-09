@@ -13,23 +13,23 @@ use crate::tokens::{
     token_type::TokenType,
 };
 
-// Token Definition
-pub struct Token {
+// Argument Token Definition
+pub struct ArgumentToken {
     pub lexeme: String,
     pub token_type: TokenType,
 }
 
-// Token Lexer Definition
-pub struct TokenLexer {
+// Argument Lexer Definition
+pub struct ArgumentLexer {
     pub characters: Vec<char>,
     pub lines: Lines<'static>,
     pub source: &'static String,
-    pub tokens: Vec<Token>,
+    pub tokens: Vec<ArgumentToken>,
 }
 
 // Token
-pub fn token(value: String, kind: TokenType) -> Token {
-    let token: Token = Token {
+pub fn token(value: String, kind: TokenType) -> ArgumentToken {
+    let token: ArgumentToken = ArgumentToken {
         lexeme: value,
         token_type: kind,
     };
@@ -38,7 +38,7 @@ pub fn token(value: String, kind: TokenType) -> Token {
 }
 
 // Advance to a Position of the Lexer
-pub fn advance_to_position(token_lexer: &TokenLexer, character_index: usize) -> char {
+pub fn advance_to_position(token_lexer: &ArgumentLexer, character_index: usize) -> char {
     return token_lexer.characters[character_index];
 }
 
@@ -48,12 +48,12 @@ pub fn alphabetic_character(source_tokens: String) -> bool {
 }
 
 // Current Position of the Lexer
-pub fn current_position(token_lexer: &TokenLexer) -> char {
+pub fn current_position(token_lexer: &ArgumentLexer) -> char {
     return token_lexer.characters[0];
 }
 
 // Returns True if Lexer Position is at the End of the File
-pub fn end_of_file(token_lexer: &TokenLexer) -> bool {
+pub fn end_of_file(token_lexer: &ArgumentLexer) -> bool {
     return token_lexer.characters.len() == 0;
 }
 
@@ -76,7 +76,7 @@ pub fn integer_character(source_tokens: String) -> bool {
 }
 
 // Advance to the Next Position of the Lexer
-pub fn next_position(token_lexer: &TokenLexer) -> char {
+pub fn next_position(token_lexer: &ArgumentLexer) -> char {
     return token_lexer.source.chars().next().unwrap();
 }
 
@@ -88,7 +88,7 @@ pub fn null_character(source_tokens: String) -> bool {
 }
 
 // Print Token
-pub fn print_token(source_token: &Token) -> () {
+pub fn print_token(source_token: &ArgumentToken) -> () {
     let mut standard_output: StdoutLock = stdout().lock();
 
     writeln!(standard_output, "{}", source_token.lexeme).unwrap();
