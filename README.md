@@ -6,7 +6,6 @@
 [MDN]: https://developer.mozilla.org/en-US/docs/Web/API
 [Minio Database]: https://min.io/
 [Network Control]: https://networkmanager.dev/
-[Postgres Database]: https://www.postgresql.org/
 [Rust Language]: https://rust-lang.org
 [SQLite Database]: https://sqlite.org
 [SSH]: https://openssh.com/
@@ -52,7 +51,7 @@ Hyaena Technologies Web Service
 
 - **_Object Storage:_** [Minio][Minio Database] - (In Progress)
 
-- **_Relational:_** [Postgres][Postgres Database], [SQLite][SQLite Database]
+- **_Relational:_** [SQLite][SQLite Database]
 
 - **_Time Series:_** [Greptime][Greptime Database] - (In Progress)
 
