@@ -4,7 +4,6 @@
 [JSON]: https://www.json.org/json-en.html
 [JWT]: https://jwt.io/
 [MDN]: https://developer.mozilla.org/en-US/docs/Web/API
-[Minio Database]: https://min.io/
 [Network Control]: https://networkmanager.dev/
 [Rust Language]: https://rust-lang.org
 [SQLite Database]: https://sqlite.org
@@ -48,8 +47,6 @@ Hyaena Technologies Web Service
 - [Command Line Documentation][CLIDoc]
 
 ### Databases
-
-- **_Object Storage:_** [Minio][Minio Database] - (In Progress)
 
 - **_Relational:_** [SQLite][SQLite Database]
 
