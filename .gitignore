@@ -4,10 +4,6 @@
 build/
 **/build/
 
-# Query Languages
-*.promql
-*.sql
-
 # Cargo Configuration
 .cargo
 
